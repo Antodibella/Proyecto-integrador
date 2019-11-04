@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Productos - Tecno Movil </title>
+    <title>Nuevo Usuario - Tecno Movil </title>
 </head>
 <body>
         <header>
@@ -34,7 +34,42 @@
                 </div>
                 <br>
             </header>
-           <!--  ACA VA LO DE LA PAGINA  -->
+           <div class="registrar">
+                <h1> <b> ¡BIENVENIDO A TECNO MOVIL!</b></h1>   
+                <br>            
+                 <h2>Crear tu cuenta en Tecno Movil!</h2> 
+                 <p>
+                        <label for="nombre"><h3> Nombre y Apellido: </h3><br> </label>
+                        <input id="nombre" type="text" name="nombre" valule="" placeholder="Ingrese su nombre">
+                </p> 
+                 <p>
+                    <label for="email"><h3> Usuario o Correo electronico:</h3> <br></label>
+                    <input id="email" type="email" name="email" valule=""  required >
+                </p>
+                <p>
+                    <label for="pass"> <h3>Contraseña:</h3> </label><br>
+                    <input id="pass" type="password" name="pass" valule="" required >
+                </p>             
+                <form action="resultado.html" method="POST">
+                        <br>
+                        <label for="genero"> <h4>¿Género?</h4></label>
+                        <br>
+                        <input type="radio" name="genero" value="h" checked>Hombre
+                        <input type="radio" name="genero" value="m">Mujer
+                        <br><br>
+                        <input type="checkbox" name="acepto" value="e" > Quiero recibir las mejores promociones via e-mail.
+                        <br>
+                        <input type="checkbox" name="acepto" value="a" >Acepto los términos y condiciones del sitio.
+                </form>
+                <br>
+                <h4>Chequeo de seguridad</h4>
+                <p>Aca quiero poner el recaptcha</p>
+                <br>
+                <button type="button" class="btn btn-primary"><h4>REGISTRARME</h4></button>  
+            
+               
+                
+           </div>
             <nav class="navbar navbar-expand-lg navbar-light bg-dark">
                     <img class="logo" src="img/LOGO.png" alt="logotipo" class="logo">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +79,7 @@
                     <div class="navbar-nav m-auto">
                             <a class="nav-item nav-link active" href="#"><h6>QUIENES SOMOS</h6> <span class="sr-only">(current)</span></a>
                             <a class="nav-item nav-link" href="#"><h6>SUCURSALES</h6></a>
-                            <a class="nav-item nav-link" href="#"><h6>REGISTRATE</h6></a>
+                            <a class="nav-item nav-link" href="registrar.html"><h6>REGISTRATE</h6></a>
                             <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><h6>CONTACTANOS</h6></a>
                     </div>
                 </div>

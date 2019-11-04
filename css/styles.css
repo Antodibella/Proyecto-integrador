@@ -81,7 +81,18 @@ position: absolute;
 .marcas {
     width: 30%;
 }
-
+.btn-danger{
+color: white!important;
+border-color: white!important;
+background-color: #dc3545;
+height: 35px;
+}
+.btn-primary{
+    background-color: #00ab4e!important;
+    border-color: #00ab4e!important;
+    margin-left: 4px;
+    height: 35px;
+}
 /* PREGUNTAS FRECUENTES */
 .preguntas{
     margin-top: 10px;
@@ -134,7 +145,7 @@ font-weight: bold;
   }
   .contacto ul {
     margin-left:20px ;
-    font-size: 20px;
+    font-size: 25px;
 
 }
 .contacto h1{
@@ -149,3 +160,70 @@ font-weight: bold;
     font-size: 25px;
 }
 
+/* LOGIN */
+.login{
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-right: 5%; 
+}
+.login ul {
+    margin-left:20px ;
+    font-size: 20px;
+}
+.login h1{
+    font-size: 45px;
+    font-weight: bold;
+    }
+.login h2{
+    font-size: 35px;
+    font-weight: bold;
+}
+.login h3{
+    font-size: 25px;
+    font-weight: bold;
+}
+.login h4{
+    font-size: 20px;
+    font-weight: bold;
+}
+.login .btn-primary{
+    background-color: #00ab4e!important;
+    border-color: #00ab4e!important;
+    height: 50px;
+    width: 50%;
+}
+.login .btn-primary1{
+    background-color: #dc3545!important;
+    border-color: #dc3545!important;
+    color: white;
+    height: 50px;
+    width: 50%;
+}
+
+/* REGISTRAR  */
+.registrar{
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-right: 5%; 
+    margin-bottom: 25px;
+}
+
+.registrar h1{
+    font-size: 45px;
+    font-weight: bold;
+    }
+.registrar h2{
+    font-size: 35px;
+    font-weight: bold;
+}
+.registrar h3{
+    font-size: 25px;
+    font-weight: bold;
+}
+.registrar h4{
+    font-size: 20px;
+    font-weight: bold;
+    }
+.registrar form{
+    font-size:  15px;
+}
