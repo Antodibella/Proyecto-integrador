@@ -33,12 +33,20 @@ body{
 .promociones {
     width: 100%;
     
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .container {
-    margin-top: 150px;
+    margin-top: 50px;
 }
+.nav-link {
+    color: white;
+}
+
+.nav-item  {
+    color:white;
+}
+
 
 .navbar{
     background-color: red;
@@ -51,15 +59,17 @@ body{
    
 }
 
+
+
 h1 {
     margin: 0 auto;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .productos-mas-vendidos{
     text-align: center;
     overflow: hidden;
-    margin-top: 150px;
+    margin-top: 50px;
 }
 .celulares{
     position: relative;
