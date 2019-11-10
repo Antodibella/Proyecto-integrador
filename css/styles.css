@@ -30,6 +30,10 @@ body{
     color: white;
 }
 
+.productos {
+    width: 100%;
+}
+
 .promociones {
     width: 100%;
     
@@ -103,6 +107,18 @@ height: 35px;
     margin-left: 4px;
     height: 35px;
 }
+
+/* PRODUCTOS */
+
+#grilla1 {
+    background-color: rgb(211, 209, 209);
+    margin-bottom: 30px;
+    margin-left: ;
+    display: block;
+    
+
+}
+
 /* PREGUNTAS FRECUENTES */
 .preguntas{
     margin-top: 10px;
