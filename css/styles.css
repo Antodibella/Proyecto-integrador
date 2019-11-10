@@ -7,6 +7,13 @@
 h6{
     color: white;
 }
+
+.los-mas-vendidos{
+    padding: 30px;
+    display: block;
+    margin: 0 auto;
+}
+
 body{
    background-color:rgb(235, 230, 230);
 }
@@ -64,7 +71,6 @@ body{
 }
 
 
-
 h1 {
     margin: 0 auto;
     margin-bottom: 30px;
@@ -81,7 +87,7 @@ h1 {
 }
 .foto {
     text-align: center;
-    width: 110%;
+    width: 100%;
     z-index: -20;
     float: left;
     padding: 30px;
@@ -120,6 +126,21 @@ height: 35px;
 }
 
 /* PREGUNTAS FRECUENTES */
+
+.preguntasreg {
+   font-size: 30px;
+}
+
+.reguntasbody{
+    padding: 40px;
+}
+
+#imgpreguntas{
+    padding: 30px;
+    display: block;
+    margin: 0 auto;
+}
+
 .preguntas{
     margin-top: 10px;
     margin-left: 5%;
@@ -157,36 +178,36 @@ font-weight: bold;
     width: 150px;
   }
   /* CONTACTO */
-  .contacto{
-    margin-top: 10px;
-    margin-left: 5%;
-    margin-right: 5%;
+  .form-row {
+      text-align: justify;
+      padding: 30px;
+      margin-right: 30px;
+      
   }
-  .contacto img{
-      text-align: center;
-      height: 450px;
-      width: 80%;
-      margin-left: 10%;
-      margin-right: 10%;
-  }
-  .contacto ul {
-    margin-left:20px ;
-    font-size: 25px;
 
-}
-.contacto h1{
-font-size: 45px;
-font-weight: bold;
-}
-.contacto h2{
-    font-size: 35px;
-    font-weight: bold;
-}
-.contacto p{
+  .quienessomos1{
+    text-align: justify;
+    font-size:  20px;
+  }
+  .quienessomos{
+    text-align: center;
     font-size: 25px;
+  }
+#conocea {
+   margin: auto;
+   display: block;
+}
+  
+
+.quieneslista {
+    list-style: none;
+    font-size: 15px;
+    color:  rgb(77, 75, 75);
+    padding: 20px;
 }
 
 /* LOGIN */
+
 .login{
     margin-top: 10px;
     margin-left: 5%;
@@ -226,6 +247,32 @@ font-weight: bold;
     width: 50%;
 }
 
+/* ingresar  */
+
+.ingresar {
+   
+    
+}
+.boton1 {
+    margin-left: 100px;
+}
+.cuenta {
+    margin-left: 100px;
+}
+
+
+.formularioingresar {
+    margin-left: 300px;  
+    padding: 40px;    
+}
+
+
+
+.form-group {
+   
+    
+}
+
 /* REGISTRAR  */
 .registrar{
     margin-top: 5px;
@@ -252,4 +299,26 @@ font-weight: bold;
     }
 .registrar form{
     font-size:  15px;
+}
+
+/* REGISTRAR 2  */
+
+.formularioregistro {
+    margin: 50px;
+    
+}
+
+.bienvenidos {
+    
+    padding: 30px;
+    display: block;
+    margin: 0 auto;
+}
+
+.boton1 {
+    background-color:  rgb(189, 9, 9);
+    color: white;
+    width: 150px;
+    height: 30px;
+  
 }

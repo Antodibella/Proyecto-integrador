@@ -8,138 +8,189 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Preguntas Frecuentes - Tecno Movil</title>
 </head>
-<body>
-    <header>
+<body class="preguntasbody">
+    
+    <!--  BARRA DE INICIO -->
+    <div class="container">
         
-        <div class="container">
-            <nav class="navbar navbar-expand-lg styles=backgroun-color: bg-danger fixed-top">
-                <img class="logo" src="img/LOGO.png" alt="logotipo" class="logo">
-                <div class="collapse navbar-collapse mb-30" id="navbarTogglerDemo02"  >
-                    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html" >INICIO<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="index.html" >PRODUCTOS <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">PROMOCIONES</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-        <br>
-    </header>
-<div class="preguntas">
-<h1> PAGO EN FORMA ONLINE (NO PRESENCIAL)</h1> 
-<br> 
-Plan Ahora 12 20%+ A Través de TODOPAGO
-<br><br>
-<h3>Transferencia o depósito bancario.</h3> 
-<br>
-<p> En todos estos casos se toma el mismo precio publicado en nuestra web
-<br><br>
-<h1>PAGO EN NUESTRO LOCAL (PRESENCIAL)</h1> 
-<br> <br>
-<p> Efectivo, Débito, Transferencia o depósito bancario. En todos estos casos se toma el mismo precio publicado en nuestra web</p>
-<br>
-<h3> Tarjetas de crédito: A través de Posnet </h3> 
-<br>
-<ul>
-    <li>
-        1 cuota 5%+ sobre el precio publicado 
-    </li>
-    <li>
-        3 cuotas 20%+ sobre el precio publicado
-    </li>
-    <li>
-        6 cuotas 30%+ sobre el precio publicado
-    </li>
-</ul>
-<br>
-<h1>PREGUNTAS FRECUENTES</h1> 
-
-</p>
-<br>
-<h3>¿Los productos se encuentran en stock?</h3> 
-<br>
-<p> Sí, todos los productos publicados se encuentran en existencia en nuestro local. </p>
-<br>
-<h3>¿Hacen envíos?</h3> 
-<br>
-<p> Sí, por medio de Transporte de carga, Bus, Oca, Correo Argentino, o por donde elija o más le convenga al cliente. El costo del envío lo abona el cliente al recibir el producto en caso de que el servicio lo permita. De lo contrario el cliente lo tendrá que abonar previamente.</p>
-<br>
-<h3>¿Son precios Finales o más IVA?</h3>
-<br>
-<p> Todos los precios son finales con IVA incluido.</p>
-<br>
-<h3>¿Entregan factura y garantía?</h3> 
-<br>
-<p> En todas las ventas que realizamos se entrega factura electrónica fiscal. Bajo ningún concepto ni excepción realizamos ventas sin factura.  
-La garantía de todos los productos es de 12 meses.</p> <br>
-
-<h3>¿Cuáles son los horarios de atención?</h3>
-<br>
-<p> Los horarios de atención son de lunes a viernes de 8:30 a 17hs, y sábados de 9 a 12:30hs.</p>
-<br>
-<h3>¿Puedo ir a local a retirar mi compra personalmente o enviar a alguien?</h3>
-<br>
-<p> Sí, podés retirar tu compra personalmente o enviar a alguien. En caso de que la compra este previamente paga, la persona que retire el o los productos, tendrá que brindar los datos del pedido y su DNI (que es el único documento válido) para retirar.</p>
-<br>
-<h3>¿Como realizo un pedido?</h3>
-<br>
-<p> Para armar un pedido simplemente agregar los productos al carro de compras y al finalizar pones comprar elegís el medio de pago.</p>
-<br>
-<h3>¿Hacen factura A? ¿Cómo la solicito?</h3>
-<br>
-<p> Si, por supuesto. En las observaciones del pedido tendrás aclarar que es con factura A y deberás enviar el número de CUIT correspondiente.
-Para resolver otro tipo de consultas podés comunicarte al correo ventas@digitalhouse.com.ar o a los teléfonos 0341-4823948 / +543401596707 en los horarios de atención al público.</p>
-<br><br>
-<br>
-<form action="resultado.html" method="POST">
-        <p>
-        <label for="nombre"><h3> Nombre y Apellido: </h3><br> </label>
-        <input id="nombre" type="text" name="nombre" valule="" placeholder="Ingrese su nombre">
-        </p> 
-        <p>
-        <label for="email"><h3> Email:</h3> <br></label>
-        <input id="email" type="email" name="email" valule="" placeholder="Ingrese su email" required >
-        </p> 
-        <p>
-        <label for="telefono"><h3> Telefono:</h3><br> </label>
-        <input id="telefono" type="text" name="telefono" valule="" placeholder="Ingrese su numero de telefono">
-        </p>
-        <p>
-        <label for="asunto"><h3>Asunto:</h3><br> </label>
-        <input id="asunto" type="text" name="asunto" valule="" >
-        </p> 
-        <br>
-        <label for="det"><h3>Detalle:</h3> <br></label> <br>
-        <textarea id="det" name="det" rows="8" cols="80">
-        </textarea>
-        <br><br>
-        <button type="button" class="btn btn-info" type="submit" name="submit"> <h2>Enviar</h2></button>
-        <br><br>
-</form>
-</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <img class="logo" src="img/LOGO.png" alt="logotipo" class="logo">
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav m-auto">
-            <a class="nav-item nav-link active" href="contacto.html">QUIENES SOMOS<span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="contacto.html">SUCURSALES</a>
-            <a class="nav-item nav-link disabled" href="contacto.html" tabindex="-1" aria-disabled="true">CONTACTANOS</a>
+        <nav class="navbar navbar-expand-lg styles=backgroun-color: bg-danger fixed-top">
+            <img class="logo" src="img/LOGO.png" alt="logotipo" class="logo">
+            <div class="collapse navbar-collapse mb-30" id="navbarTogglerDemo02"  >
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="productos.html">PRODUCTOS <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
+    
+    <!--  BARRA  SECUNDARIA -->
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mr-auto">
+            <a class="navbar-brand ml-auto" href="login.html">Ingresar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Ingresar" aria-controls="Ingresar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+            <a class="navbar-brand " href="Registrar2.html">Registrarse</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Registrarse" aria-controls="Registrarse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> 
+            <a class="navbar-brand " href="#">Compras</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Registrarse" aria-controls="Compras" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
 </div>
-</nav>
 
 
-</body>
-</html>
+
+<!--  Formas de pago  -->
+<img id="imgpreguntas" src="img/formas de pago.png" alt="consulta" width="50%">
+<br>
+<br>
+<div class="row">
+    <div class="col-md-6">
+        <h1 class="preguntasreg"> PAGO EN FORMA ONLINE</h1> 
+        <h1 class="preguntasreg">(NO PRESENCIAL)</h1> 
+        <br> 
+        <br> 
+        Plan Ahora 12 20%+ A Través de TODOPAGO
+        <br><br>
+        <h3>Transferencia o depósito bancario.</h3> 
+        <br>
+        <p> En todos estos casos se toma el mismo precio publicado en nuestra web
+            
+        </div>   
+        <div class="col-md-6">
+            <h1 class="preguntasreg">PAGO EN NUESTRO LOCAL</h1>
+            <h1 class="preguntasreg"> (PRESENCIAL)</h1> 
+            <br> <br>
+            <p> Efectivo, Débito, Transferencia o depósito bancario. En todos estos casos se toma el mismo precio publicado en nuestra web</p>
+            <br>
+            <h3> Tarjetas de crédito: A través de Posnet </h3> 
+            <br>
+            <ul>
+                <li>
+                    1 cuota 5%+ sobre el precio publicado 
+                </li>
+                <li>
+                    3 cuotas 20%+ sobre el precio publicado
+                </li>
+                <li>
+                    6 cuotas 30%+ sobre el precio publicado
+                </li>
+            </ul>
+            <br>
+            
+        </div>  
+        
+    </div>        
+    <!--  PREGUNTAS  -->
+    
+    <br>
+    <img id="imgpreguntas" src="img/preguntas frecuentes.png" alt="preguntasfrecuentes" width="50%"> 
+<br>
+<br>
+<br>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3>1.¿Los productos se encuentran en stock?</h3> 
+            <br>
+            <p> Sí, todos los productos publicados se encuentran en existencia en nuestro local. </p>
+            <br>
+            <h3>2.¿Hacen envíos?</h3> 
+            <br>
+            <p> Sí, por medio de Transporte de carga, Bus, Oca, Correo Argentino, o por donde elija o más le convenga al cliente. El costo del envío lo abona el cliente al recibir el producto en caso de que el servicio lo permita. De lo contrario el cliente lo tendrá que abonar previamente.</p>
+            <h3>3.¿Cuáles son los horarios de atención?</h3>
+            <br>
+            <p> Los horarios de atención son de lunes a viernes de 8:30 a 17hs, y sábados de 9 a 12:30hs.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>4.¿Son precios Finales o más IVA?</h3>
+            <br>
+            <p> Todos los precios son finales con IVA incluido.</p>
+            <br>
+            <h3>5.¿Entregan factura y garantía?</h3> 
+            <br>
+            <p> En todas las ventas que realizamos se entrega factura electrónica fiscal. Bajo ningún concepto ni excepción realizamos ventas sin factura.  
+                La garantía de todos los productos es de 12 meses.</p> 
+                <br>
+                <h3>6.¿Hacen factura A? ¿Cómo la solicito?</h3>
+                <br>
+                <p> Si, por supuesto. En las observaciones del pedido tendrás aclarar que es con factura A y deberás enviar el número de CUIT correspondiente.
+                    Para resolver otro tipo de consultas podés comunicarte al correo ventas@digitalhouse.com.ar o a los teléfonos 0341-4823948 / +543401596707 en los horarios de atención al público.</p>
+                    
+                </div>
+                <div class="col-md-4">
+                    <h3>7.¿Puedo ir a local a retirar mi compra personalmente o enviar a alguien?</h3>
+                    <br>
+                    <p> Sí, podés retirar tu compra personalmente o enviar a alguien. En caso de que la compra este previamente paga, la persona que retire el o los productos, tendrá que brindar los datos del pedido y su DNI (que es el único documento válido) para retirar.</p>
+                    <br>
+                    <h3>8.¿Como realizo un pedido?</h3>
+                    <br>
+                    <p> Para armar un pedido simplemente agregar los productos al carro de compras y al finalizar pones comprar elegís el medio de pago.</p>
+                </div>
+                
+            </div>
+            <br>
+            <br>
+            <br>
+            
+         <!--  Formulario  -->   
+
+         <img id="imgpreguntas" src="img/envianos tu consulta.png" alt="consulta" width="50%">
+            
+         <form class="formularioregistro">  
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4"> Nombre</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Nombre">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="apellido"> Apellido</label>
+                        <input type="apellido" class="form-control" id="inputPassword4" placeholder="Apellido">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4"> Email</label>
+                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Envianos tu consulta</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="80"></textarea>
+                          </div>
+                  
+                </div>
+              <button type="submit" class="boton1">Enviar</button>
+            </form>  
+            
+        
+        
+        <!--  BARRA DE PIE DE PAGINA  -->
+        
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <img class="logo" src="img/LOGO.png" alt="logotipo" class="logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav m-auto">
+                    <a class="nav-item nav-link active" href="contacto.html">Quienes Somos <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="Registrar2.html">Registrarse <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
+                    
+                </div>
+            </div>
+        </nav>
+        
+    </body>
+    </html>
