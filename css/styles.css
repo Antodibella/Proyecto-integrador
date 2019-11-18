@@ -3,6 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* BARRAS */
+.navbar {
+    background-color: darkgrey !important;
+}
+
 /* HOME */
 h6{
     color: white;
@@ -15,7 +21,7 @@ h6{
 }
 
 body{
-   background-color:rgb(235, 230, 230);
+   background-color: white;
 }
 
 .logo {
@@ -58,9 +64,6 @@ body{
     color:white;
 }
 
-
-.navbar{
-    background-color: red;
 }
 
 .productosmas h1 {
@@ -114,7 +117,27 @@ height: 35px;
     height: 35px;
 }
 
+a:hover {
+    color: black !important;
+}
+
 /* PRODUCTOS */
+
+.row p {
+    text-align: center !important;
+}
+
+.col-md-5 p {
+
+    text-align: center !important;
+}
+
+.navbar-navbar-expand-lg  {
+    background-color: darkgray !important;
+}
+.navbar {
+    background-color: darkgrey !important;
+}
 
 #grilla1 {
     background-color: rgb(211, 209, 209);
@@ -138,6 +161,17 @@ height: 35px;
     padding-right: 10%;
 }
 /* PREGUNTAS FRECUENTES */
+
+.col-md-6 ul {
+    list-style-type:none;
+}
+
+.row h3 {
+    text-align: initial;
+}
+.row p {
+    text-align: initial;
+}
 
 .preguntasreg {
    font-size: 30px;
