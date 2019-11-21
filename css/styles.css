@@ -64,8 +64,6 @@ body{
     color:white;
 }
 
-}
-
 .productosmas h1 {
     color: black;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
@@ -295,7 +293,6 @@ font-weight: bold;
 
 /* ingresar  */
 
-.ingresar {
    
     
 }
@@ -312,9 +309,6 @@ font-weight: bold;
     padding: 40px;    
 }
 
-
-
-.form-group {
    
     
 }
