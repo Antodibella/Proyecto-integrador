@@ -7,12 +7,18 @@ if ($_POST) {
     $db = file_get_contents("usuario.json");
     $usuario = json_decode($db, true);
 
-    if(strlen($_POST["username"]) > 6 && strlen($_POST["password"]) > 6 ) {
+    if(strlen($_POST["name"]) > 1 && strlen($_POST["password"]) > 1 ) {
 
-       $usuario[] = [ "nombre" => $_POST ["name"],
-                        "email" => $_POST ["email"],
+       $usuario[] = [   "nombre" => $_POST ["name"],
+                        "apellido" => $_POST ["surname"],
                         "username" => $_POST ["username"],
-                        "contraseña" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
+                        "email" => $_POST ["email"],
+                        "password" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
+                        "password" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
+                        "city" => $_POST ["city"],
+                        "country" => $_POST ["country"],
+                        "email" => $_POST ["email"],
+                        "cp" => $_POST ["cp"],
                      ];
        $db = json_encode ($usuario);
 
@@ -69,43 +75,53 @@ if ($_POST) {
         
             <img class="bienvenidos" src="img/bienvenidos a tecno movil.png" width="700px" alt="logotipo" class="logo">
         </div>
-        <form class="formularioregistro" method="POST">  
+        <form class="formularioregistro" action="" method="post">
+            <input type="hidden" name="submitted" id="submitted" value="1">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name"> Nombre</label>
-                    <input type="name" class="form-control" id="nombre" placeholder="Nombre">
+                    <input type="name" name="name" class="form-control" value="" id="nombre" placeholder="Nombre" required>
+                    <span id="register_name_errorloc" class="error"></span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="apellido"> Apellido</label>
-                    <input type="apellido" class="form-control" id="inputPassword4" placeholder="Apellido">
+                    <label for="surname"> Apellido</label>
+                    <input type="apellido" name="surname" class="form-control" id="surname" placeholder="Apellido" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4"> Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <label for="username"> Usuario</label>
+                    <input type="username" name="username" class="form-control" id="username" placeholder="Nombre de Usuario" required>
                 </div>
                 <div class="form-group col-md-6">
-                    <label for="inputPassword4"> Contraseña</label>
-                    <input type="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
+                    <label for="email"> Email</label>
+                    <input type="text" name="email" value="" class="form-control" id="email" placeholder="Email" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password"> Contraseña</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="password1">Confirmar Contraseña</label>
+                    <input type="password"  name="password" class="form-control" id="password" placeholder="Contraseña" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputCity">Ciudad</label>
-                    <input type="text" class="form-control" id="inputCity">
+                    <label for="city">Ciudad</label>
+                    <input type="text" name="city" class="form-control" id="city" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Pais</label>
-                    <select id="inputState" class="form-control">
+                    <select id="country" name="country" class="form-control" required>
                         <option selected>Argentina</option>
                         <option>Brasil</option>
                         <option>Chile</option>
                         <option>Uruguay</option>
                         <option>Paraguay</option>
-                    </select>
-                </div>
+                    </select> 
+                </div> 
                 <div class="form-group col-md-2">
-                    <label for="inputZip">Codigo Postal</label>
-                    <input type="text" class="form-control" id="inputZip">
+                    <label for="cp">Codigo Postal</label>
+                    <input type="text" name="cp" class="form-control" id="cp" required>
                 </div>
             </div>
             <div class="form-group">
@@ -116,7 +132,7 @@ if ($_POST) {
                     </label>
                     <br>
                     <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
+                    <label class="form-check-label" for="gridCheck" required>
                         Acepto terminos y condiciones
                     </label>
                 </div>
