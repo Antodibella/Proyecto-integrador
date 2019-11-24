@@ -7,14 +7,14 @@ if ($_POST) {
     $db = file_get_contents("usuario.json");
     $usuario = json_decode($db, true);
 
-    if(strlen($_POST["name"]) > 1 && strlen($_POST["password"]) > 1 ) {
+    if(strlen($_POST["name"]) > 2 && strlen($_POST["surname"]) > 2 && strlen($_POST["username"]) > 5 && strlen($_POST["password"]) > 6 && strlen($_POST["city"]) > 2 && strlen($_POST["cp"]) > 2 ) {
 
        $usuario[] = [   "nombre" => $_POST ["name"],
                         "apellido" => $_POST ["surname"],
                         "username" => $_POST ["username"],
                         "email" => $_POST ["email"],
                         "password" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
-                        "password" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
+                        "password1" => $hash = password_hash($_POST["password1"], PASSWORD_DEFAULT), 
                         "city" => $_POST ["city"],
                         "country" => $_POST ["country"],
                         "email" => $_POST ["email"],
@@ -24,8 +24,36 @@ if ($_POST) {
 
        file_put_contents("usuario.json", $db);
     }
-    else {
-        $error = "No completó el formulario";
+    else {$error = "No completó el formulario";
+        if(strlen($_POST["name"]) < 2){
+            echo "El nombre es demasiado corto <br>";
+        } 
+        if(strlen($_POST["surname"]) < 2){
+            echo "El apellido es demasiado corto <br>";
+        } 
+        if(strlen($_POST["username"]) < 2){
+            echo "El Usuario debe contener mas de 5 caracteres <br>";
+        } 
+        // if(strlen($_POST["username"]) > 5){
+        //    foreach($usuario => "username")
+         //   echo "Ya hay un usuario con ese nombre <br>";
+        //}    queremos validar que no exista un usuario.  
+
+        if(strlen($_POST["password"]) < 6){
+            echo "La contraseña es demasiada corta <br>";
+        }  
+        if(($_POST["password"]) != ($_POST["password1"]) ){
+            echo "Las contraseñas no coinciden <br>";
+        } 
+        if(strlen($_POST["city"]) < 1){
+            echo "La ciudad no existe <br>";
+        }
+        if(strlen($_POST["cp"]) < 2){
+            echo "El codigo postal no existe <br>";
+        }    
+        
+        
+
     }
 
 }
@@ -101,7 +129,7 @@ if ($_POST) {
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password1">Confirmar Contraseña</label>
-                    <input type="password"  name="password" class="form-control" id="password" placeholder="Contraseña" required>
+                    <input type="password"  name="password1" class="form-control" id="password1" placeholder="Contraseña" required>
                 </div>
             </div>
             <div class="form-row">
