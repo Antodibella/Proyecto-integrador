@@ -122,7 +122,7 @@ a:hover {
 /* PRODUCTOS */
 
 .row p {
-    text-align: center !important;
+    text-align: left !important;
 }
 
 .col-md-5 p {
@@ -221,12 +221,17 @@ font-weight: bold;
     height: 70px;
     width: 150px;
   }
+  .boton1{
+      margin-left: 45%;;
+  }
   /* CONTACTO */
   .form-row {
-      text-align: justify;
+      /* text-align: justify;
       padding: 30px;
       margin-right: 30px;
-      
+      */
+      padding: 60px;
+    
   }
 
   .quienessomos1{
@@ -249,16 +254,18 @@ font-weight: bold;
     color:  rgb(77, 75, 75);
     padding: 20px;
 }
-
+.form-group{
+    padding;: 5%;
+}
 /* LOGIN */
 
 .login{
-    margin-top: 10px;
+    /* margin-top: 10px;
     margin-left: 5%;
-    margin-right: 5%; 
+    margin-right: 5%;*/ 
 }
 .login ul {
-    margin-left:20px ;
+    margin-left:0px  !important;
     font-size: 20px;
 }
 .login h1{
@@ -305,7 +312,7 @@ font-weight: bold;
 
 
 .formularioingresar {
-    margin-left: 300px;  
+    margin-left: 0px;  
     padding: 40px;    
 }
 

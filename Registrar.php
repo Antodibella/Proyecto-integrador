@@ -1,3 +1,30 @@
+<?php
+
+$error = "";
+
+if ($_POST) {
+    
+    $db = file_get_contents("usuario.json");
+    $usuario = json_decode($db, true);
+
+    if(strlen($_POST["username"]) > 6 && strlen($_POST["password"]) > 6 ) {
+
+       $usuario[] = [ "nombre" => $_POST ["name"],
+                        "email" => $_POST ["email"],
+                        "username" => $_POST ["username"],
+                        "contraseña" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
+                     ];
+       $db = json_encode ($usuario);
+
+       file_put_contents("usuario.json", $db);
+    }
+    else {
+        $error = "No completó el formulario";
+    }
+
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +39,7 @@
 
        <!--  BARRA DE INICIO -->
    <nav class="navbar navbar-expand-lg navbar-light ">
-    <img class="logo" src="img/LOGO.png" alt="logotipo" class="logo">
+    <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -42,11 +69,11 @@
         
             <img class="bienvenidos" src="img/bienvenidos a tecno movil.png" width="700px" alt="logotipo" class="logo">
         </div>
-        <form class="formularioregistro">  
+        <form class="formularioregistro" method="POST">  
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label for="inputEmail4"> Nombre</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Nombre">
+                    <label for="name"> Nombre</label>
+                    <input type="name" class="form-control" id="nombre" placeholder="Nombre">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="apellido"> Apellido</label>
@@ -103,14 +130,14 @@
 
 
         <nav class="navbar navbar-expand-lg navbar-light">
-                <img class="logo" src="img/LOGO.png" alt="logotipo" class="logo">
+            <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav m-auto">
                         <a class="nav-item nav-link active" href="contacto.html">Quienes Somos <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link active" href="Registrar2.html">Registrarse <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
                         
                 </div>
