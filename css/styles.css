@@ -320,34 +320,31 @@ font-weight: bold;
     
 }
 
-/* REGISTRAR  */
-.registrar{
-    margin-top: 5px;
-    margin-left: 5%;
-    margin-right: 5%; 
-    margin-bottom: 25px;
+
+
+
+
+/* REGISTRAR   */
+
+.formularioregistro {
+    margin: 50px;
+    
 }
 
-.registrar h1{
-    font-size: 45px;
-    font-weight: bold;
-    }
-.registrar h2{
-    font-size: 35px;
-    font-weight: bold;
-}
-.registrar h3{
-    font-size: 25px;
-    font-weight: bold;
-}
-.registrar h4{
-    font-size: 20px;
-    font-weight: bold;
-    }
-.registrar form{
-    font-size:  15px;
+.bienvenidos {
+    
+    padding: 30px;
+    display: block;
+    margin: 0 auto;
 }
 
+.boton1 {
+    background-color:  rgb(189, 9, 9);
+    color: white;
+    width: 150px;
+    height: 30px;
+  
+}
 /* REGISTRAR 2  */
 
 .formularioregistro {
@@ -368,4 +365,12 @@ font-weight: bold;
     width: 150px;
     height: 30px;
   
+}
+/* CONDICIONES */
+.cond{
+    margin-top: 15px;
+    margin-left: 10%;
+    margin-right: 10%; 
+    margin-bottom: 25px;
+    text-align: center;
 }

@@ -7,7 +7,7 @@ if ($_POST) {
     $db = file_get_contents("usuario.json");
     $usuario = json_decode($db, true);
 
-    if(strlen($_POST["name"]) > 2 && strlen($_POST["surname"]) > 2 && strlen($_POST["username"]) > 5 && strlen($_POST["password"]) > 6 && strlen($_POST["city"]) > 2 && strlen($_POST["cp"]) > 2 ) {
+    if((filter_var(($_POST["email"]) ,FILTER_VALIDATE_EMAIL))  && strlen($_POST["name"]) > 2 && strlen($_POST["surname"]) > 2 && strlen($_POST["username"]) > 5 && strlen($_POST["password"]) > 6 && strlen($_POST["city"]) > 2 && strlen($_POST["cp"]) > 2 ) {
 
        $usuario[] = [   "nombre" => $_POST ["name"],
                         "apellido" => $_POST ["surname"],
@@ -31,20 +31,33 @@ if ($_POST) {
         if(strlen($_POST["surname"]) < 2){
             echo "El apellido es demasiado corto <br>";
         } 
-        if(strlen($_POST["username"]) < 2){
+        if(strlen($_POST["username"]) < 5){
             echo "El Usuario debe contener mas de 5 caracteres <br>";
         } 
         // if(strlen($_POST["username"]) > 5){
         //    foreach($usuario => "username")
          //   echo "Ya hay un usuario con ese nombre <br>";
         //}    queremos validar que no exista un usuario.  
-
+      
         if(strlen($_POST["password"]) < 6){
             echo "La contraseña es demasiada corta <br>";
         }  
         if(($_POST["password"]) != ($_POST["password1"]) ){
             echo "Las contraseñas no coinciden <br>";
         } 
+        /* agregados 25/11 */
+        if (((strlen($_POST["password"])) == 0) &&((strlen($_POST["password1"])) == 0)){
+            echo  "Los dos campos de contraseña estan vacios";
+          }
+          if ((strlen($_POST["password"])) == 0){
+            echo "La contraseña esta vacia";
+          }
+          if ((strlen($_POST["password1"])) == 0){
+            echo "Falta la confirmacion de contraseña";  
+          }
+          
+          
+        /* hasta aca */
         if(strlen($_POST["city"]) < 1){
             echo "La ciudad no existe <br>";
         }
@@ -160,12 +173,11 @@ if ($_POST) {
                     </label>
                     <br>
                     <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck" required>
-                        Acepto terminos y condiciones
-                    </label>
+                    <label for="condiciones"> <a href="condiciones.html">Acepta los terminos y condiciones</a> </label>
+                    
                 </div>
             </div>
-            <button type="submit" class="boton1">Registrarme</button>
+            <button type="submit" class="boton1">Registrarme</button> <br><br>
         </form>
         
         
