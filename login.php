@@ -96,7 +96,7 @@ if ($_POST) {
                 <label for="inputPassword4" class="cuenta  m-auto"> ¿No tienes cuenta?</label>
                 <br>
                 <br>
-                <button type="submit" class="boton1 ml-auto">Registrarme</button>
+                <button type="submit" class="boton1 ml-auto"> <a href="registrar.php"> Registrarme </a></button>
                     <br><br>
             
                 <a class="dropdown-item  m-auto" href="#" >Olvide mi contraseña</a>

@@ -26,13 +26,13 @@ if ($_POST) {
     }
     else {$error = "No completó el formulario";
         if(strlen($_POST["name"]) < 2){
-            echo "El nombre es demasiado corto <br>";
+           // echo "El nombre es demasiado corto <br>";
         } 
         if(strlen($_POST["surname"]) < 2){
-            echo "El apellido es demasiado corto <br>";
+           // echo "El apellido es demasiado corto <br>";
         } 
         if(strlen($_POST["username"]) < 2){
-            echo "El Usuario debe contener mas de 5 caracteres <br>";
+            // echo "El Usuario debe contener mas de 5 caracteres <br>";
         } 
         // if(strlen($_POST["username"]) > 5){
         //    foreach($usuario => "username")
@@ -40,16 +40,16 @@ if ($_POST) {
         //}    queremos validar que no exista un usuario.  
 
         if(strlen($_POST["password"]) < 6){
-            echo "La contraseña es demasiada corta <br>";
+            //echo "La contraseña es demasiada corta <br>";
         }  
         if(($_POST["password"]) != ($_POST["password1"]) ){
-            echo "Las contraseñas no coinciden <br>";
+           // echo "Las contraseñas no coinciden <br>";
         } 
         if(strlen($_POST["city"]) < 1){
-            echo "La ciudad no existe <br>";
+           // echo "La ciudad no existe <br>";
         }
         if(strlen($_POST["cp"]) < 2){
-            echo "El codigo postal no existe <br>";
+            // echo "El codigo postal no existe <br>";
         }    
         
         
@@ -90,7 +90,7 @@ if ($_POST) {
                     <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
+                    <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
                 </li>
             </ul>       
         </div>
