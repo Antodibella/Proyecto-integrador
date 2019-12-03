@@ -367,5 +367,13 @@ font-weight: bold;
     color: white;
     width: 150px;
     height: 30px;
-  
+}
+
+/* CONDICIONES */
+.cond{
+    margin-top: 15px;
+    margin-left: 10%;
+    margin-right: 10%; 
+    margin-bottom: 25px;
+    text-align: center;
 }

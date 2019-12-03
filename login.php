@@ -1,3 +1,39 @@
+<?php
+// Inicio sesión
+session_start();
+// Inicio errores
+$errores = [];
+$db = file_get_contents('usuario.json');
+$usuarios = json_decode($db, true);
+if ($_POST) {
+    if (strlen($_POST['username']) < 3) {
+        $errores['username'] = 'Debe ingresar su nombre de usuario';
+    }
+    $usuario = $usuarios[array_search($_POST['username'], array_column($usuarios, 'username'))];
+    if (!$usuario) {
+        $errores['username'] = 'El usuario no existe';
+    } else {
+        if (password_verify($_POST['password'], $usuario['password'])) {
+            $_SESSION['usuario'] = $usuario;
+            if($_POST['recordarme'] == true){
+                setcookie('usuario',json_encode($usuario),time()+604800);
+            }
+            header('Location: miperfil.php');
+        } else {
+            $errores['password'] = 'La clave no es correcta';
+        }
+    }
+} else {
+    if(isset($_COOKIE['usuario'])){
+        $_SESSION['usuario'] = json_decode($_COOKIE['usuario'],true);
+    }
+    if (isset($_SESSION['usuario'])) {
+        header('Location: miperfil.php');
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,7 +65,7 @@
                     <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.html" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
+                    <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
                 </li>
             </ul>       
         </div>

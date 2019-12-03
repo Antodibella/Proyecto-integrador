@@ -161,7 +161,7 @@ if ($_POST) {
                     <br>
                     <input class="form-check-input" type="checkbox" id="gridCheck">
                     <label class="form-check-label" for="gridCheck" required>
-                        Acepto terminos y condiciones
+                    <a href="condiciones.html"> Acepta los terminos y condiciones</a> 
                     </label>
                 </div>
             </div>
