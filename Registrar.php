@@ -1,63 +1,130 @@
 <?php
-
-$error = "";
-
-if ($_POST) {
-    
+session_start();
+if(isset($_SESSION["usuario"])){
+    header("Location: perfil.php");
+}
+$errores = [];
+$index=0;
+$induser=0;
+$id=0;
+if ($_POST){
     $db = file_get_contents("usuario.json");
     $usuario = json_decode($db, true);
+    if(isset($_POST["name"])){
+        if( empty($_POST['name']) ) {
+            $errores['name'] = "Este campo debe completarse.";
+        }
+        elseif( strlen($_POST['name']) < 2 ) {
+            $errores['name'] = "Tu nombre debe tener al menos 2 caracteres.";
+            }
+    }
+    if( isset($_POST['surname']) ) {
+        if( empty($_POST['surname']) ) {
+            $errores['surname'] = "Este campo debe completarse.";
+        }
+        elseif( strlen($_POST['surname']) < 2 ) {
+            $errores['surname'] = "Tu apellido debe tener al menos 2 caracteres.";
+        }
+    }
+    if( isset($_POST['email']) ) {
+        if( empty($_POST['email']) ) {
+            $errores['email'] = "Este campo debe completarse.";
+        }
+        elseif( !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ) {
+            $errores['email'] = "Debés ingresar un email válido.";
+        }
+    }
+    if( isset($_POST['password']) ) {
+        if( empty($_POST['password']) ) {
+            $errores['password'] = "Este campo debe completarse.";
+        }
+        elseif( strlen($_POST['password']) < 6 ) {
+            $errores['password'] = "Tu contraseña debe tener al menos 6 caracteres.";
+        }
+    }
+    if( isset($_POST['password1']) ) {
+        if( empty($_POST['password1']) ) {
+            $errores['password1'] = "Este campo debe completarse.";
+        }
+        elseif( strlen($_POST['password1']) < 6 ) {
+            $errores['password1'] = "Tu confirmacion de contraseña no es correcta.";
+        }
+    }
+    if(($_POST["password"]) != ($_POST["password1"]) ){
+        $errores['password1'] = "Las contraseñas no coinciden";
+    } 
+    if(!isset($_POST["condiciones"]) ) {
+       
+            $errores['condiciones'] = "No aceptó terminos y condiciones.";
+       
+    }
+    if( isset($_POST["username"]) ) {
+        if( empty($_POST['username']) ) {
+            $errores['username'] = "Este campo debe completarse.";
+        }
+        elseif( strlen($_POST['username']) < 6 ) {
+            $errores['username'] = "Tu nombre de usuario debe tener al menos 6 caracteres.";
+        }
+    }
+    if( isset($_POST["city"]) ) {
+        if( empty($_POST['city']) ) {
+            $errores['city'] = "Este campo debe completarse.";
+        }
+        elseif( strlen($_POST['city']) < 2 ) {
+            $errores['city'] = "No completo el campo ciudad.";
+        }
+    }
+    if( isset($_POST["cp"]) ) {
+        if( empty($_POST['cp']) ) {
+            $errores['cp'] = "El campo codigo postal debe completarse.";
+        }
+        elseif( strlen($_POST['cp']) < 2 ) {
+            $errores['cp'] = "No completo el campo codigo postal.";
+        }
+    }
+    if(isset($_POST["email"])){
+        $email = array_column($usuario,"email");
+        $index = array_search($_POST["email"],$email);
+        if($index !== false){
+            $errores['email'] = "El email ya se uso para otro registro";
+            }
+   
+    }
+    if(isset($_POST["username"])){
+        $username = array_column($usuario,"username");
+        $induser = array_search($_POST["username"],$username);
+        if($induser !== false){
+            $errores['username'] = "Ya existe nombre de usuario";
+            }
+    }
+    
+    if(count($errores) == 0){
 
-    if(strlen($_POST["name"]) > 2 && strlen($_POST["surname"]) > 2 && strlen($_POST["username"]) > 5 && strlen($_POST["password"]) > 6 && strlen($_POST["city"]) > 2 && strlen($_POST["cp"]) > 2 ) {
+    
 
-       $usuario[] = [   "nombre" => $_POST ["name"],
-                        "apellido" => $_POST ["surname"],
-                        "username" => $_POST ["username"],
-                        "email" => $_POST ["email"],
+    if(count($usuario)){
+        $id = end($usuario)['id'] +1;
+    } 
+    
+       $usuario[] = $_SESSION['usuario'] =[  "nombre" => $_POST["name"],
+                        "apellido" => $_POST["surname"],
+                        "username" => $_POST["username"],
+                        "email" => $_POST["email"],
                         "password" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
                         "password1" => $hash = password_hash($_POST["password1"], PASSWORD_DEFAULT), 
-                        "city" => $_POST ["city"],
-                        "country" => $_POST ["country"],
-                        "email" => $_POST ["email"],
-                        "cp" => $_POST ["cp"],
+                        "city" => $_POST["city"],
+                        "country" => $_POST["country"],
+                        "email" => $_POST["email"],
+                        "cp" => $_POST["cp"],
+                        "id" => $id,
                      ];
        $db = json_encode ($usuario);
 
        file_put_contents("usuario.json", $db);
-    }
-    else {$error = "No completó el formulario";
-        if(strlen($_POST["name"]) < 2){
-           // echo "El nombre es demasiado corto <br>";
-        } 
-        if(strlen($_POST["surname"]) < 2){
-           // echo "El apellido es demasiado corto <br>";
-        } 
-        if(strlen($_POST["username"]) < 2){
-            // echo "El Usuario debe contener mas de 5 caracteres <br>";
-        } 
-        // if(strlen($_POST["username"]) > 5){
-        //    foreach($usuario => "username")
-         //   echo "Ya hay un usuario con ese nombre <br>";
-        //}    queremos validar que no exista un usuario.  
 
-        if(strlen($_POST["password"]) < 6){
-            //echo "La contraseña es demasiada corta <br>";
-        }  
-        if(($_POST["password"]) != ($_POST["password1"]) ){
-           // echo "Las contraseñas no coinciden <br>";
-        } 
-        if(strlen($_POST["city"]) < 1){
-           // echo "La ciudad no existe <br>";
-        }
-        if(strlen($_POST["cp"]) < 2){
-            // echo "El codigo postal no existe <br>";
-        }    
-        
-        
-
-    }
-
-}
-
+       header('Location: perfil.php');
+    } }
+                                    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,6 +170,13 @@ if ($_POST) {
         
             <img class="bienvenidos" src="img/bienvenidos a tecno movil.png" width="700px" alt="logotipo" class="logo">
         </div>
+        <?php if(count($errores)) : ?>                   
+                    <ul>
+                        <?php foreach($errores as $error): ?>
+                            <li><strong><?=$error?></strong></li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?>
         <form class="formularioregistro" action="" method="post">
             <input type="hidden" name="submitted" id="submitted" value="1">
             <div class="form-row">
@@ -159,15 +233,13 @@ if ($_POST) {
                         Quiero recibir promociones
                     </label>
                     <br>
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck" required>
-                    <a href="condiciones.html"> Acepta los terminos y condiciones</a> 
-                    </label>
+                    <input class="form-check-input" type="checkbox" id="gridCheck" name="condiciones" value="acepto">
+                    <label for="condiciones" name="condiciones"> <a href="condiciones.html" target="_blank">Acepta los terminos y condiciones</a> </label>
+                    
                 </div>
             </div>
-            <button type="submit" class="boton1">Registrarme</button>
+            <button type="submit" class="boton1">Registrarme</button> <br><br>
         </form>
-        
         
         
         <!--  BARRA DE PIE DE PAGINA  -->
