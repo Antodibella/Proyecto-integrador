@@ -1,3 +1,58 @@
+<?php 
+session_start();
+$erroresPreguntas = [];
+$idpreg = 0;
+if ($_POST){
+    $db = file_get_contents("consulta.json");
+    $consulta = json_decode($db, true);
+    if(isset($_POST["name"])){
+        if( empty($_POST['name']) ) {
+            $erroresPreguntas['name'] = "No completo el nombre.";
+        }
+        elseif( strlen($_POST['name']) < 2 ) {
+            $erroresPreguntas['name'] = "Tu nombre debe tener al menos 2 caracteres.";
+            }
+    }
+    if( isset($_POST['surname']) ) {
+        if( empty($_POST['surname']) ) {
+            $erroresPreguntas['surname'] = "No completo el apellido.";
+        }
+        elseif( strlen($_POST['surname']) < 2 ) {
+            $erroresPreguntas['surname'] = "Tu apellido debe tener al menos 2 caracteres.";
+        }
+    }
+    if( isset($_POST['email']) ) {
+        if( empty($_POST['email']) ) {
+            $erroresPreguntas['email'] = "No completo el campo email.";
+        }
+        elseif( !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ) {
+            $erroresPreguntas['email'] = "Debés ingresar un email válido.";
+        }
+    }
+    if( isset($_POST['consulta']) ) {
+        if( empty($_POST['consulta']) ) {
+            $erroresPreguntas['consulta'] = "No escribio la consulta";
+        }
+        if(count($erroresPreguntas) == 0){
+
+            if(count($consulta)){
+                $idpreg = end($consulta)['id'] +1;
+            } 
+        
+               $consulta[] =[  "nombre" => $_POST["name"],
+                                "apellido" => $_POST["surname"],
+                                "email" => $_POST["email"],
+                                "consulta" => $_POST["consulta"],
+                                "id" => $idpreg,
+                             ];
+               $db = json_encode ($consulta);
+        
+               file_put_contents("consulta.json", $db);
+               header('Location: exito.php');
+            }
+            } }
+        
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,36 +188,45 @@
                 
             </div>
             <br>
-            <br>
-            <br>
+            
             
          <!--  Formulario  -->   
-
+ 
          <img id="imgpreguntas" src="img/envianos tu consulta.png" alt="consulta" width="50%">
-            
-         <form class="formularioregistro">  
+          
+         <?php if(count($erroresPreguntas)) : ?>                   
+                    <ul>
+                        <?php foreach($erroresPreguntas as $errorP): ?>
+                            <li><strong><?=$errorP?></strong></li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?>
+         <form class="formularioregistro" action="" method="post">  
+         <input type="hidden" name="submitted" id="submitted" value="1">
                 <div class="form-row">
                     <div class="form-group col-md-7 m-auto">
                         <label for="name"> Nombre</label>
-                        <input type="name" class="form-control" id="name" placeholder="Nombre">
+                        <input type="name" class="form-control" name="name" id="name" placeholder="Nombre">
                     </div>
                     
                     <div class="form-group col-md-7 m-auto">
                         <label for="apellido"> Apellido</label>
-                        <input type="apellido" class="form-control" id="apellido" placeholder="Apellido">
+                        <input type="apellido" class="form-control" name="surname" id="surname" placeholder="Apellido">
                     </div>
                     <div class="form-group col-md-7 m-auto">
                         <label for="inputEmail4"> Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email">
                     </div>
                     <br>
                     <div class="form-group col-md-7 m-auto ">
                             <label for="exampleFormControlTextarea1">Envianos tu consulta</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols="80"></textarea>
+                            <textarea class="form-control" name="consulta" id="exampleFormControlTextarea1" rows="3" cols="80"></textarea>
                           </div>
+                  <br><br>
+                  
                   
                 </div>
-              <button type="submit" class="boton1">Enviar</button>
+              <button type="submit" name="submit" class="boton1">Enviar</button>
             </form>  
         </section>   
         

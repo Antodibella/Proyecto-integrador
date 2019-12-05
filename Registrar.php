@@ -7,6 +7,8 @@ $errores = [];
 $index=0;
 $induser=0;
 $id=0;
+
+
 if ($_POST){
     $db = file_get_contents("usuario.json");
     $usuario = json_decode($db, true);
@@ -183,7 +185,7 @@ if ($_POST){
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name"> Nombre</label>
-                    <input type="name" name="name" class="form-control" value="<?=$_POST['name']?>" id="nombre" placeholder="Nombre" required>
+                    <input type="name" name="name" class="form-control"  value="<?=$_POST['name']?>" id="nombre" placeholder="Nombre" required>
                     <span id="register_name_errorloc" class="error"></span>
                 </div>
                 <div class="form-group col-md-6">
@@ -196,7 +198,7 @@ if ($_POST){
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email"> Email</label>
-                    <input type="text" name="email" value="<?=$_POST['email']?>" class="form-control" id="email" placeholder="Email" required>
+                    <input type="text" name="email"  value="<?=$_POST['email']?>" class="form-control" id="email" placeholder="Email" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password"> Contraseña</label>
@@ -210,7 +212,7 @@ if ($_POST){
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">Ciudad</label>
-                    <input type="text" name="city" value="<?=$_POST['city']?>" class="form-control" id="city" required>
+                    <input type="text" name="city"  value="<?=$_POST['city']?>" class="form-control" id="city" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Pais</label>
@@ -224,7 +226,7 @@ if ($_POST){
                 </div> 
                 <div class="form-group col-md-2">
                     <label for="cp">Codigo Postal</label>
-                    <input type="text" name="cp" class="form-control" value="<?=$_POST['cp']?>" id="cp" required>
+                    <input type="text" name="cp" class="form-control"  value="<?= $_POST['cp']?>" id="cp" required>
                 </div>
             </div>
             <div class="form-group">
