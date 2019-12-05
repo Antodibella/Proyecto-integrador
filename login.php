@@ -47,6 +47,7 @@ if ($_POST) {
 <body>
     
     <!--  BARRA DE INICIO -->
+    <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
     <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,8 +72,9 @@ if ($_POST) {
         </div>
     </div>
 </nav>
+</header>
     <!--  Formulario  -->
-    
+    <section>
     <div class="ingresar">
         
         <img class="bienvenidos" src="img/ingresar.png" width="700px" alt="logotipo" class="logo">
@@ -107,9 +109,9 @@ if ($_POST) {
         
     </div>
     
-    
+    </section>
     <!--  BARRA DE PIE DE PAGINA  -->
-    
+    <footer>
     <nav class="navbar navbar-expand-lg navbar-light ">
         <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -124,10 +126,7 @@ if ($_POST) {
             </div>
         </div>
     </nav>
-    
-    
-    
-    
+    </footer>
     
 </body>
 </html>

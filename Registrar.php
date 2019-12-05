@@ -139,6 +139,7 @@ if ($_POST){
 <body>
 
        <!--  BARRA DE INICIO -->
+    <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
     <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -163,10 +164,10 @@ if ($_POST){
         </div>
     </div>
 </nav>
-   
-        
-        <!--  FORMULARIO  -->
-        <div>
+</header>
+ <!--  FORMULARIO  -->
+ <section>
+ <div>
         
             <img class="bienvenidos" src="img/bienvenidos a tecno movil.png" width="700px" alt="logotipo" class="logo">
         </div>
@@ -240,11 +241,11 @@ if ($_POST){
             </div>
             <button type="submit" class="boton1">Registrarme</button> <br><br>
         </form>
-        
+        </section>
         
         <!--  BARRA DE PIE DE PAGINA  -->
 
-
+        <footer>
         <nav class="navbar navbar-expand-lg navbar-light">
             <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -259,5 +260,6 @@ if ($_POST){
                 </div>
             </div>
         </nav>
-        
-        
+        </footer>
+        </body>
+        </html>
