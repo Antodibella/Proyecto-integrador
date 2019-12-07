@@ -6,8 +6,7 @@ if(isset($_SESSION["usuario"])){
 $errores = [];
 $index=0;
 $induser=0;
-$id=0;
-
+$id=0;        
 
 if ($_POST){
     $db = file_get_contents("usuario.json");

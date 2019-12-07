@@ -103,7 +103,7 @@ if ($_POST) {
             
                 <a class="dropdown-item  m-auto" href="#" >Olvide mi contraseña</a>
                 <a class="dropdown-item  m-auto" href="#">Olvide mi nombre de usuario</a>
-                <a class="dropdown-item  m-auto" href="#">No me llego el mail de confirmacion</a>
+                <a class="dropdown-item  m-auto" href="#">No me llego el mail de confirmación</a>
             </div>
          </div>
         
