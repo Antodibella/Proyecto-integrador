@@ -1,3 +1,48 @@
+<?php 
+
+$aCarrito = array();
+$sHTML = '';
+$fPrecioTotal = 0;
+
+//Vaciamos el carrito
+
+if(isset($_GET['vaciar'])) {
+	unset($_COOKIE['carrito']);
+}
+
+//Obtenemos los productos anteriores
+
+if(isset($_COOKIE['carrito'])) {
+	$aCarrito = unserialize($_COOKIE['carrito']);
+}
+
+//Anyado un nuevo articulo al carrito
+
+if(isset($_GET['nombre']) && isset($_GET['precio'])) {
+	$iUltimaPos = count($aCarrito);
+	$aCarrito[$iUltimaPos]['nombre'] = $_GET['nombre'];
+	$aCarrito[$iUltimaPos]['precio'] = $_GET['precio'];
+}
+
+//Creamos la cookie (serializamos)
+
+$iTemCad = time() + (60 * 60);
+setcookie('carrito', serialize($aCarrito), $iTemCad);
+
+
+
+//Imprimimos el contenido del array
+
+foreach ($aCarrito as $key => $value) {
+	$sHTML .= '-> ' . $value['nombre'] . ' ' . $value['precio'] . '<br>';
+	$fPrecioTotal += $value['precio'];
+}
+
+//Imprimimos el precio total
+
+$sHTML .= '<br>------------------<br>Precio total: ' . $fPrecioTotal;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,13 +88,24 @@
 
 <div class="jumbotron">
 <ul class="carrito" >
-                <li><a  href="carrito.php">Carrito <span class="sr-only">(current)</span></a>
-                </li>
-                <li class=""> <a  href="guardados.php">Guardados <span class="sr-only">(current)</span></a>
-                </li>
+               
   <hr>
-  
-  <p>TU CARRITO ESTA VACIO.</p>
+  <div>
+		<?php echo $sHTML; ?>
+	</div>
+	<ul>
+		<li><a href="carrito.php?nombre=iphone-8&precio=65000"img="img/iphone-8-03.png">Iphone 8</a></li>
+		<li><a href="carrito.php?nombre=Iphone-X&precio=85000">Iphone X 256 Gb</a></li>
+		<li><a href="carrito.php?nombre=Iphone-11&precio=125000">Iphone 11 PRO</a></li>
+		<li><a href="carrito.php?nombre=SamsumgS8&precio=47000">Samsung S8</a></li>
+		<li><a href="carrito.php?nombre=SamsumgS9&precio=29000">Samsung S9</a></li>
+		<li><a href="carrito.php?nombre=SamsumgS10Plus&precio=125000">Samsung S10 Plus</a></li>
+		<li><a href="carrito.php?nombre=moto-G5&precio=8500">Motorola G5</a></li>
+		<li><a href="carrito.php?nombre=moto-G6&precio=16000">Motorola G6</a></li>
+        <li><a href="carrito.php?nombre=moto-G7&precio=18000">Motorola G7</a></li>
+		<li><a href="carrito.php?vaciar=1">Vaciar Carrito</a></li>
+	</ul>	  
+
   
 </div>
 

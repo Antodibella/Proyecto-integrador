@@ -184,7 +184,7 @@ if ($_POST){
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name"> Nombre</label>
-                    <input type="name" name="name" class="form-control"  value="<?=$_POST['name']?>" id="nombre" placeholder="Nombre" required>
+                    <input type="name" name="name" class="form-control"  value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" id="nombre" placeholder="Nombre" required>
                     <span id="register_name_errorloc" class="error"></span>
                 </div>
                 <div class="form-group col-md-6">

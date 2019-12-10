@@ -4,12 +4,12 @@ session_start();
 // Inicio errores
 $errores = [];
 $db = file_get_contents('usuario.json');
-$usuarios = json_decode($db, true);
+$usuario = json_decode($db, true);
 if ($_POST) {
     if (strlen($_POST['username']) < 3) {
         $errores['username'] = 'Debe ingresar su nombre de usuario';
     }
-    $usuario = $usuarios[array_search($_POST['username'], array_column($usuarios, 'username'))];
+    $usuario = $usuario[array_search($_POST['username'], array_column($usuario, 'username'))];
     if (!$usuario) {
         $errores['username'] = 'El usuario no existe';
     } else {
@@ -79,22 +79,25 @@ if ($_POST) {
         
         <img class="bienvenidos" src="img/ingresar.png" width="700px" alt="logotipo" class="logo">
     
-    <form class="formularioingresar">  
+    <form class="formularioingresar" method="POST" action="login.php">  
         <div class="form-row">
             <div class="form-group col-md-6 m-auto">
                 <label for="inputEmail4"> Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
             </div>
         </div>
         <div class="form-row"> 
             <div class="form-group col-md-6  m-auto" >
                 <label for="inputPassword4"> Contraseña</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
+                <input  name="password" type="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
                 <br>
                 <br>
                 <button type="submit" class="boton1 ml-auto">ingresar</button>
                 <br>
-                <br>
+                <div class="container" style='height:50px;'>
+                    <input type="checkbox" name="recordarme" value="true"> Recordarme<br>
+                </div>
+                                <br>
                 <label for="inputPassword4" class="cuenta  m-auto"> ¿No tienes cuenta?</label>
                 <br>
                 <br>
