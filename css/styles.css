@@ -382,3 +382,16 @@ font-weight: bold;
     color: white !important;
     text-decoration: none;
 }
+
+/* PRODUCTOS SAlE index */
+
+.row p {
+    text-align: center !important;
+}
+
+/* PRODUCTOS */
+
+.row-description {
+    margin-top: 15px;
+    padding-left: 50px;
+}
