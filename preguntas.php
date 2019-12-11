@@ -100,7 +100,8 @@ if ($_POST){
 <section>
 <img id="imgpreguntas" src="img/formas de pago.png" alt="consulta" width="50%">
 <br>
-<center>
+<div class="errores">
+
 <?php if(count($erroresPreguntas)) : ?>   
                     <img src="img/atencion.png" alt="">      
                     <br><br>        
@@ -111,7 +112,7 @@ if ($_POST){
                         <?php endforeach;?>
                     </ul>
                 <?php endif;?>
-</center>
+            </div>
 <br>
 <br>
 <div class="row">

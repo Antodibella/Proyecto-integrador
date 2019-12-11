@@ -7,7 +7,7 @@ $db = file_get_contents('usuario.json');
 $usuario = json_decode($db, true);
 if ($_POST) {
     if (strlen($_POST['email']) < 3) {
-        $errores['email'] = 'Debe ingresar su email de usuario';
+        $errores['email'] = 'El email de usuario no es correcto';
     }
     $usuario = $usuario[array_search($_POST['email'], array_column($usuario, 'email'))];
     if (!$usuario) {
@@ -20,7 +20,7 @@ if ($_POST) {
             }
             header('Location: miperfil.php');
         } else {
-            $errores['password'] = 'La clave no es correcta';
+            $errores['password'] = 'La contraseña no es correcta';
         }
     }
 } else {
@@ -78,7 +78,18 @@ if ($_POST) {
     <div class="ingresar">
         
         <img class="bienvenidos" src="img/ingresar.png" width="700px" alt="logotipo" class="logo">
-    
+<div class="errores">
+
+        <?php if(count($errores)) : ?>   
+                    <img src="img/atencion.png" alt="">      
+                    <br><br>        
+                    <ul>
+                        <?php foreach($errores as $error): ?>
+                            <li><strong><?=$error?></strong></li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?>
+    </div>            
     <form class="formularioingresar" method="POST" action="login.php">  
         <div class="form-row">
             <div class="form-group col-md-6 m-auto">
@@ -90,13 +101,14 @@ if ($_POST) {
             <div class="form-group col-md-6  m-auto" >
                 <label for="inputPassword4"> Contraseña</label>
                 <input  name="password" type="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
-                <br>
-                <br>
-                <button type="submit" class="boton1 ml-auto">ingresar</button>
-                <br>
+    
                 <div class="container" style='height:50px;'>
                     <input type="checkbox" name="recordarme" value="true"> Recordarme<br>
                 </div>
+           
+                <button type="submit" class="boton1 ml-auto">ingresar</button>
+                <br>
+                
                                 <br>
                 <label for="inputPassword4" class="cuenta  m-auto"> ¿No tienes cuenta?</label>
                 <br>
@@ -105,8 +117,6 @@ if ($_POST) {
                     <br><br>
             
                 <a class="dropdown-item  m-auto" href="#" >Olvide mi contraseña</a>
-                <a class="dropdown-item  m-auto" href="#">Olvide mi nombre de usuario</a>
-                <a class="dropdown-item  m-auto" href="#">No me llego el mail de confirmación</a>
             </div>
          </div>
         

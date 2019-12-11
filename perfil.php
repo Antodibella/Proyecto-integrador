@@ -1,10 +1,10 @@
 <?php
 session_start();
-if (isset($_GET['email'])) {
+if (isset($_POST['email'])) {
     $db = file_get_contents('usuario.json');
     $usuario = json_decode($db, true);
     foreach($usuario as $u){
-        if($u['email'] == $_GET['email']){
+        if($u['email'] == $_POST['email']){
             $usuario = $u;
         }
     }
