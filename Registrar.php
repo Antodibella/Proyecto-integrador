@@ -6,8 +6,7 @@ if(isset($_SESSION["usuario"])){
 $errores = [];
 $index=0;
 $induser=0;
-$id=0;
-
+$id=0;        
 
 if ($_POST){
     $db = file_get_contents("usuario.json");
@@ -60,6 +59,11 @@ if ($_POST){
             $errores['condiciones'] = "No aceptó terminos y condiciones.";
        
     }
+    if(isset($_POST["promociones"]) ) {
+       
+        $promo['email'] = $_POST["email"];
+   
+}
     if( isset($_POST["username"]) ) {
         if( empty($_POST['username']) ) {
             $errores['username'] = "Este campo debe completarse.";
@@ -185,20 +189,20 @@ if ($_POST){
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="name"> Nombre</label>
-                    <input type="name" name="name" class="form-control"  value="<?=$_POST['name']?>" id="nombre" placeholder="Nombre" required>
+                    <input type="name" name="name" class="form-control"  value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" id="nombre" placeholder="Nombre" required>
                     <span id="register_name_errorloc" class="error"></span>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="surname"> Apellido</label>
-                    <input type="apellido" name="surname" class="form-control" value="<?=$_POST['surname']?>" id="surname" placeholder="Apellido" required>
+                    <input type="apellido" name="surname" class="form-control" value="<?= isset($_POST['surname']) ? $_POST['surname'] : '' ?>" id="surname" placeholder="Apellido" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="username"> Usuario</label>
-                    <input type="username" name="username" class="form-control" value="<?=$_POST['username']?>" id="username" placeholder="Nombre de Usuario" required>
+                    <input type="username" name="username" class="form-control" value="<?= isset($_POST['username']) ? $_POST['username'] : '' ?>" id="username" placeholder="Nombre de Usuario" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="email"> Email</label>
-                    <input type="text" name="email"  value="<?=$_POST['email']?>" class="form-control" id="email" placeholder="Email" required>
+                    <input type="text" name="email"  value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>" class="form-control" id="email" placeholder="Email" required>
                 </div>
                 <div class="form-group col-md-6">
                     <label for="password"> Contraseña</label>
@@ -212,7 +216,7 @@ if ($_POST){
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="city">Ciudad</label>
-                    <input type="text" name="city"  value="<?=$_POST['city']?>" class="form-control" id="city" required>
+                    <input type="text" name="city"  value="<?= isset($_POST['city']) ? $_POST['city'] : '' ?>" class="form-control" id="city" required>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="inputState">Pais</label>
@@ -226,18 +230,18 @@ if ($_POST){
                 </div> 
                 <div class="form-group col-md-2">
                     <label for="cp">Codigo Postal</label>
-                    <input type="text" name="cp" class="form-control"  value="<?= $_POST['cp']?>" id="cp" required>
+                    <input type="text" name="cp" class="form-control"  value="<?= isset($_POST['cp']) ? $_POST['cp'] : '' ?>" id="cp" required>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
+                    <label class="form-check-label" name="promociones   " for="gridCheck">
                         Quiero recibir promociones
                     </label>
                     <br>
                     <input class="form-check-input" type="checkbox" id="gridCheck" name="condiciones" value="acepto">
-                    <label for="condiciones" name="condiciones"> <a href="condiciones.html" value="<?=$_POST['condiciones']?>" target="_blank">Acepta los terminos y condiciones</a> </label>
+                    <label for="condiciones" name="condiciones"> <a href="condiciones.html" value="<?= isset($_POST['condiciones']) ? $_POST['condiciones'] : '' ?>" target="_blank">Acepta los terminos y condiciones</a> </label>
                     
                 </div>
             </div>

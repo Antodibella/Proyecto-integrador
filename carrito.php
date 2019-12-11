@@ -1,3 +1,48 @@
+<?php 
+
+$aCarrito = array();
+$sHTML = '';
+$fPrecioTotal = 0;
+
+//Vaciamos el carrito
+
+if(isset($_GET['vaciar'])) {
+	unset($_COOKIE['carrito']);
+}
+
+//Obtenemos los productos anteriores
+
+if(isset($_COOKIE['carrito'])) {
+	$aCarrito = unserialize($_COOKIE['carrito']);
+}
+
+//Anyado un nuevo articulo al carrito
+
+if(isset($_GET['nombre']) && isset($_GET['precio'])) {
+	$iUltimaPos = count($aCarrito);
+	$aCarrito[$iUltimaPos]['nombre'] = $_GET['nombre'];
+	$aCarrito[$iUltimaPos]['precio'] = $_GET['precio'];
+}
+
+//Creamos la cookie (serializamos)
+
+$iTemCad = time() + (60 * 60);
+setcookie('carrito', serialize($aCarrito), $iTemCad);
+
+
+
+//Imprimimos el contenido del array
+
+foreach ($aCarrito as $key => $value) {
+	$sHTML .= '-> ' . $value['nombre'] . ' ' . $value['precio'] . '<br>';
+	$fPrecioTotal += $value['precio'];
+}
+
+//Imprimimos el precio total
+
+$sHTML .= '<br>------------------<br>Precio total: ' . $fPrecioTotal;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +51,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Iphone 8 - Tecno Movil</title>
-</head>
-<body class="producto">
-   <!--  BARRA DE INICIO -->
-<header>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>Mi carrito</title>
+    <body>
+    <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
     <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,63 +70,49 @@
                     <a class="nav-link" href="productos.html">PRODUCTOS <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
+                    <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
+                </li>
+                <li>
+                    <i class="fas fa-cart-plus"></i>
                 </li>
             </ul>       
         </div>
     </div>
 </nav>
-</header>
-<!-- Descripcion del procucto -->
-<section>
-<<<<<<< HEAD
-    <div class="products">
-        <div class="row">
-            <div class="col-md-9 col-lg-4">
-                    <img src="img/iphone-8-03.png" alt="logotipo" class="img-fluid mb-3">
-                                
-            </div>
-            <div class="row-description">
-                
-                <ul>
-                    <li><h2>IPHONE 8 64gb</h2></li>
-                    <hr>
-                    <li>Liberado</li>
-                    <li>Procesador Apple A11 Bionic (10 nm) - 2 GB</li>
-                    <li>Pantalla 4.7" IPS LCD de 750 x 1334 pixeles</li>
-                    <li>Cámara trasera de 12 MP f/1.8</li>
-                    <li>Cámara delantera 7 MP f/2.2</li>
-                    <li>Bateria 1821 mAh con cárga inalámbrica</li>
-                    <li>Resistencia al agua y al polvo IP67</li>
-                    <li>Memoria interna: <strong> 64 GB</strong></li>
-                </ul>
-                <hr>
-                <ul><li><strong>PRECIO: 65.000 ARS</strong></li></ul>
-                <button type="button" class="btn btn-outline-success">Comprar ahora</button>
-                <button type="button" class="btn btn-outline-primary">Agregar al carrito</button>
-            </div>
-            
-        </div>   
-      
-        
-        
-    </div> 
-    <br><br>
-    <br><br>
-    <br><br>
-    <br>
-=======
-<!--  Banner  -->
-<section>
-       
->>>>>>> 9870157083d496239cc24c173845cb031496d762
+<br>
+<br>
+<section class="carritocompra">
+
+<div class="jumbotron">
+<ul class="carrito" >
+               
+  <hr>
+  <div>
+		<?php echo $sHTML; ?>
+	</div>
+	<ul>
+		<li><a href="carrito.php?nombre=iphone-8&precio=65000"img="img/iphone-8-03.png">Iphone 8</a></li>
+		<li><a href="carrito.php?nombre=Iphone-X&precio=85000">Iphone X 256 Gb</a></li>
+		<li><a href="carrito.php?nombre=Iphone-11&precio=125000">Iphone 11 PRO</a></li>
+		<li><a href="carrito.php?nombre=SamsumgS8&precio=47000">Samsung S8</a></li>
+		<li><a href="carrito.php?nombre=SamsumgS9&precio=29000">Samsung S9</a></li>
+		<li><a href="carrito.php?nombre=SamsumgS10Plus&precio=125000">Samsung S10 Plus</a></li>
+		<li><a href="carrito.php?nombre=moto-G5&precio=8500">Motorola G5</a></li>
+		<li><a href="carrito.php?nombre=moto-G6&precio=16000">Motorola G6</a></li>
+        <li><a href="carrito.php?nombre=moto-G7&precio=18000">Motorola G7</a></li>
+		<li><a href="carrito.php?vaciar=1">Vaciar Carrito</a></li>
+	</ul>	  
+
+  
+</div>
+
 </section>
- <!--  BARRA DE PIE DE PAGINA  -->
-<footer>
- <nav class="navbar navbar-expand-lg navbar-light ">
+<br><br><br>
+    <footer>
+<nav class="navbar navbar-expand-lg navbar-light ">
     <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

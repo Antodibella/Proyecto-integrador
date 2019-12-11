@@ -4,14 +4,14 @@ session_start();
 // Inicio errores
 $errores = [];
 $db = file_get_contents('usuario.json');
-$usuarios = json_decode($db, true);
+$usuario = json_decode($db, true);
 if ($_POST) {
-    if (strlen($_POST['username']) < 3) {
-        $errores['username'] = 'Debe ingresar su nombre de usuario';
+    if (strlen($_POST['email']) < 3) {
+        $errores['email'] = 'El email de usuario no es correcto';
     }
-    $usuario = $usuarios[array_search($_POST['username'], array_column($usuarios, 'username'))];
+    $usuario = $usuario[array_search($_POST['email'], array_column($usuario, 'email'))];
     if (!$usuario) {
-        $errores['username'] = 'El usuario no existe';
+        $errores['email'] = 'El email no existe';
     } else {
         if (password_verify($_POST['password'], $usuario['password'])) {
             $_SESSION['usuario'] = $usuario;
@@ -20,7 +20,7 @@ if ($_POST) {
             }
             header('Location: miperfil.php');
         } else {
-            $errores['password'] = 'La clave no es correcta';
+            $errores['password'] = 'La contraseña no es correcta';
         }
     }
 } else {
@@ -78,23 +78,38 @@ if ($_POST) {
     <div class="ingresar">
         
         <img class="bienvenidos" src="img/ingresar.png" width="700px" alt="logotipo" class="logo">
-    
-    <form class="formularioingresar">  
+<div class="errores">
+
+        <?php if(count($errores)) : ?>   
+                    <img src="img/atencion.png" alt="">      
+                    <br><br>        
+                    <ul>
+                        <?php foreach($errores as $error): ?>
+                            <li><strong><?=$error?></strong></li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?>
+    </div>            
+    <form class="formularioingresar" method="POST" action="login.php">  
         <div class="form-row">
             <div class="form-group col-md-6 m-auto">
                 <label for="inputEmail4"> Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
             </div>
         </div>
         <div class="form-row"> 
             <div class="form-group col-md-6  m-auto" >
                 <label for="inputPassword4"> Contraseña</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
-                <br>
-                <br>
+                <input  name="password" type="password" class="form-control" id="inputPassword4" placeholder="Contraseña">
+    
+                <div class="container" style='height:50px;'>
+                    <input type="checkbox" name="recordarme" value="true"> Recordarme<br>
+                </div>
+           
                 <button type="submit" class="boton1 ml-auto">ingresar</button>
                 <br>
-                <br>
+                
+                                <br>
                 <label for="inputPassword4" class="cuenta  m-auto"> ¿No tienes cuenta?</label>
                 <br>
                 <br>
@@ -102,8 +117,6 @@ if ($_POST) {
                     <br><br>
             
                 <a class="dropdown-item  m-auto" href="#" >Olvide mi contraseña</a>
-                <a class="dropdown-item  m-auto" href="#">Olvide mi nombre de usuario</a>
-                <a class="dropdown-item  m-auto" href="#">No me llego el mail de confirmacion</a>
             </div>
          </div>
         

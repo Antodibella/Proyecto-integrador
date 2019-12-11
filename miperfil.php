@@ -1,3 +1,18 @@
+<?php
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
+} else {
+    header('Location: perfil.php');
+}
+if ($_POST) {
+    if ($_POST['salir'] == 'Salir') {
+        session_destroy();
+        setcookie('usuario','',-1);
+        header('Location: login.php');
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +21,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Iphone 8 - Tecno Movil</title>
+    <title>Preguntas Frecuentes - Tecno Movil</title>
 </head>
-<body class="producto">
+<body class="preguntasbody">
    <!--  BARRA DE INICIO -->
-<header>
+   <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
     <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,53 +51,69 @@
     </div>
 </nav>
 </header>
-<!-- Descripcion del procucto -->
-<section>
-<<<<<<< HEAD
-    <div class="products">
-        <div class="row">
-            <div class="col-md-9 col-lg-4">
-                    <img src="img/iphone-8-03.png" alt="logotipo" class="img-fluid mb-3">
-                                
-            </div>
-            <div class="row-description">
-                
-                <ul>
-                    <li><h2>IPHONE 8 64gb</h2></li>
-                    <hr>
-                    <li>Liberado</li>
-                    <li>Procesador Apple A11 Bionic (10 nm) - 2 GB</li>
-                    <li>Pantalla 4.7" IPS LCD de 750 x 1334 pixeles</li>
-                    <li>Cámara trasera de 12 MP f/1.8</li>
-                    <li>Cámara delantera 7 MP f/2.2</li>
-                    <li>Bateria 1821 mAh con cárga inalámbrica</li>
-                    <li>Resistencia al agua y al polvo IP67</li>
-                    <li>Memoria interna: <strong> 64 GB</strong></li>
-                </ul>
-                <hr>
-                <ul><li><strong>PRECIO: 65.000 ARS</strong></li></ul>
-                <button type="button" class="btn btn-outline-success">Comprar ahora</button>
-                <button type="button" class="btn btn-outline-primary">Agregar al carrito</button>
-            </div>
-            
-        </div>   
-      
-        
-        
-    </div> 
-    <br><br>
-    <br><br>
-    <br><br>
-    <br>
-=======
-<!--  Banner  -->
-<section>
+    <section>
+        <center>
+        <?php if (isset($usuario)) : ?>
+        <h1>Perfil </h1>
+        <form action="miperfil.php" method="post"> <button type="submit" class="btn btn-secondary">Salir</button>
+</form>   
+        <hr>
        
->>>>>>> 9870157083d496239cc24c173845cb031496d762
+        <form action="miperfil.php">
+<button onclick="document.getElementById('id01').style.display='block'" class="btn btn-secondary" style="width:auto;">Editar mi perfil</button>
+
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="/action_page.php">
+    <div class="container">
+      <h1>Editar mi perfil</h1>
+      <p>Por favor complete todo los campos</p>
+      <hr>
+      <label for="name"><b>Nombre</b></label>
+      <input type="text" placeholder="Escriba su Nombre" name="name" required>
+        <br><br>
+        <label for="surname"><b>Apellido</b></label>
+      <input type="text" placeholder="Escriba su Apellido" name="surname" required>
+        <br><br>  
+      <label for="email"><b>Email   </b></label>
+      <input type="text" placeholder="Escriba su Email" name="email" required>
+        <br><br>
+        <label for="email"><b>Usuario</b></label>
+      <input type="text" placeholder="Escriba su Usuario" name="username" required>
+        <br><br>
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Escriba su contraseña" name="password" required>
+       <br><br>
+        
+
+      
+
+      <div class="clearfix">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-secondary">Salir</button>
+        <button type="submit" class="btn btn-secondary">Guardar Cambios</button>
+      </div>
+      <br><br>
+    </div>
+  </form>
+  </form>
+</div>
+<hr>
+                
+
+  <h4>Nombre:</h4><?php echo $usuario['name'] ?>
+  <br>
+ <h4>Apellido:</h4><?php echo $usuario['surname'] ?>
+  <br>
+  <h4>Email:</h4><?php echo $usuario['email'] ?>
+  <br>
+  <h4>Nombre de Usuario:</h4><?php echo $usuario['username'] ?>
+  <br>
+        <?php endif; ?>    
+        </center> 
 </section>
- <!--  BARRA DE PIE DE PAGINA  -->
+
 <footer>
- <nav class="navbar navbar-expand-lg navbar-light ">
+ <nav class="navbar navbar-expand-lg navbar-light fixed-bottom">
     <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -92,12 +123,10 @@
             <a class="nav-item nav-link active" href="contacto.html">Quienes Somos <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
-            <!--     <i class="fab fa-twitter"></i>
-            <i class="fab fa-facebook-f"></i>
-            -->
+            
         </div>
     </div>
 </nav>
 </footer>
-    </body>
-    </html>
+</body>
+</html>
