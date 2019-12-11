@@ -6,12 +6,12 @@ $errores = [];
 $db = file_get_contents('usuario.json');
 $usuario = json_decode($db, true);
 if ($_POST) {
-    if (strlen($_POST['username']) < 3) {
-        $errores['username'] = 'Debe ingresar su nombre de usuario';
+    if (strlen($_POST['email']) < 3) {
+        $errores['email'] = 'Debe ingresar su email de usuario';
     }
-    $usuario = $usuario[array_search($_POST['username'], array_column($usuario, 'username'))];
+    $usuario = $usuario[array_search($_POST['email'], array_column($usuario, 'email'))];
     if (!$usuario) {
-        $errores['username'] = 'El usuario no existe';
+        $errores['email'] = 'El email no existe';
     } else {
         if (password_verify($_POST['password'], $usuario['password'])) {
             $_SESSION['usuario'] = $usuario;

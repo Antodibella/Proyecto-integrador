@@ -7,31 +7,31 @@ if ($_POST){
     $consulta = json_decode($db, true);
     if(isset($_POST["name"])){
         if( empty($_POST['name']) ) {
-            $erroresPreguntas['name'] = "No completo el nombre.";
+            $erroresPreguntas['name'] = "El campo nombre.";
         }
         elseif( strlen($_POST['name']) < 2 ) {
-            $erroresPreguntas['name'] = "Tu nombre debe tener al menos 2 caracteres.";
+            $erroresPreguntas['name'] = "Que el campo nombre no es valido";
             }
     }
     if( isset($_POST['surname']) ) {
         if( empty($_POST['surname']) ) {
-            $erroresPreguntas['surname'] = "No completo el apellido.";
+            $erroresPreguntas['surname'] = "El campo apellido.";
         }
         elseif( strlen($_POST['surname']) < 2 ) {
-            $erroresPreguntas['surname'] = "Tu apellido debe tener al menos 2 caracteres.";
+            $erroresPreguntas['surname'] = "Que el campo apellido no es valido";
         }
     }
     if( isset($_POST['email']) ) {
         if( empty($_POST['email']) ) {
-            $erroresPreguntas['email'] = "No completo el campo email.";
+            $erroresPreguntas['email'] = "El campo email no es valido ";
         }
         elseif( !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL) ) {
-            $erroresPreguntas['email'] = "Debés ingresar un email válido.";
+            $erroresPreguntas['email'] = "El campo emailno es un email válido.";
         }
     }
     if( isset($_POST['consulta']) ) {
         if( empty($_POST['consulta']) ) {
-            $erroresPreguntas['consulta'] = "No escribio la consulta";
+            $erroresPreguntas['consulta'] = "Falta su consulta";
         }
         if(count($erroresPreguntas) == 0){
 
@@ -99,6 +99,19 @@ if ($_POST){
 <!--  Formas de pago  -->
 <section>
 <img id="imgpreguntas" src="img/formas de pago.png" alt="consulta" width="50%">
+<br>
+<center>
+<?php if(count($erroresPreguntas)) : ?>   
+                    <img src="img/atencion.png" alt="">      
+                    <br><br>        
+                    <h1>NO SE PUDO ENVIAR SU CONSULTA, REVISE:</h1><br>
+                    <ul>
+                        <?php foreach($erroresPreguntas as $errorP): ?>
+                            <li><strong><?=$errorP?></strong></li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?>
+</center>
 <br>
 <br>
 <div class="row">
@@ -194,33 +207,27 @@ if ($_POST){
  
          <img id="imgpreguntas" src="img/envianos tu consulta.png" alt="consulta" width="50%">
           
-         <?php if(count($erroresPreguntas)) : ?>                   
-                    <ul>
-                        <?php foreach($erroresPreguntas as $errorP): ?>
-                            <li><strong><?=$errorP?></strong></li>
-                        <?php endforeach;?>
-                    </ul>
-                <?php endif;?>
+         
          <form class="formularioregistro" action="" method="post">  
          <input type="hidden" name="submitted" id="submitted" value="1">
                 <div class="form-row">
                     <div class="form-group col-md-7 m-auto">
                         <label for="name"> Nombre</label>
-                        <input type="name" class="form-control" name="name" id="name" placeholder="Nombre">
+                        <input type="name" class="form-control" name="name" id="name" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" placeholder="Nombre">
                     </div>
                     
                     <div class="form-group col-md-7 m-auto">
                         <label for="apellido"> Apellido</label>
-                        <input type="apellido" class="form-control" name="surname" id="surname" placeholder="Apellido">
+                        <input type="apellido" class="form-control" name="surname" value="<?= isset($_POST['surname']) ? $_POST['surname'] : '' ?>"  id="surname" placeholder="Apellido">
                     </div>
                     <div class="form-group col-md-7 m-auto">
                         <label for="inputEmail4"> Email</label>
-                        <input type="email" class="form-control" name="email" id="inputEmail4" placeholder="Email">
+                        <input type="email" class="form-control" name="email" value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>"  id="inputEmail4" placeholder="Email">
                     </div>
                     <br>
                     <div class="form-group col-md-7 m-auto ">
                             <label for="exampleFormControlTextarea1">Envianos tu consulta</label>
-                            <textarea class="form-control" name="consulta" id="exampleFormControlTextarea1" rows="3" cols="80"></textarea>
+                            <textarea class="form-control" name="consulta" value="<?= isset($_POST['consulta']) ? $_POST['consulta'] : '' ?>"  id="exampleFormControlTextarea1" rows="3" cols="80"></textarea>
                           </div>
                   <br><br>
                   

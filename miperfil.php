@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
 } else {
-    header('Location: login.php');
+    header('Location: perfil.php');
 }
 if ($_POST) {
     if ($_POST['salir'] == 'Salir') {
