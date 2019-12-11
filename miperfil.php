@@ -27,7 +27,7 @@ if ($_POST) {
    <!--  BARRA DE INICIO -->
    <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
-    <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
+    <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,13 +35,13 @@ if ($_POST) {
         <div class="navbar-nav ml-auto">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">INICIO <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="productos.html">PRODUCTOS <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="productos.php">PRODUCTOS <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
+                    <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
@@ -55,8 +55,9 @@ if ($_POST) {
         <center>
         <?php if (isset($usuario)) : ?>
         <h1>Perfil </h1>
-        <form action="miperfil.php" method="post"> <button type="submit" class="btn btn-secondary">Salir</button>
-</form>   
+        <form action="miperfil.php" method="post"> 
+            <button type="submit" class="btn btn-secondary">Salir</button>
+       </form>   
         <hr>
        
         <form action="miperfil.php">
@@ -75,7 +76,7 @@ if ($_POST) {
         <label for="surname"><b>Apellido</b></label>
       <input type="text" placeholder="Escriba su Apellido" name="surname" required>
         <br><br>  
-      <label for="email"><b>Email   </b></label>
+      <label for="email"><b>Email</b></label>
       <input type="text" placeholder="Escriba su Email" name="email" required>
         <br><br>
         <label for="email"><b>Usuario</b></label>
@@ -99,10 +100,10 @@ if ($_POST) {
 </div>
 <hr>
                 
-
+<section>
   <h4>Nombre:</h4><?php echo $usuario['name'] ?>
   <br>
- <h4>Apellido:</h4><?php echo $usuario['surname'] ?>
+  <h4>Apellido:</h4> <?php echo $usuario['surname'] ?>
   <br>
   <h4>Email:</h4><?php echo $usuario['email'] ?>
   <br>
@@ -114,7 +115,7 @@ if ($_POST) {
 
 <footer>
  <nav class="navbar navbar-expand-lg navbar-light fixed-bottom">
-    <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
+    <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -122,7 +123,7 @@ if ($_POST) {
         <div class="navbar-nav m-auto">
             <a class="nav-item nav-link active" href="contacto.html">Quienes Somos <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="preguntas.php">Ayuda<span class="sr-only">(current)</span></a>
             
         </div>
     </div>

@@ -13,7 +13,7 @@
     <!--  BARRA DE INICIO -->
     <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
+        <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -21,13 +21,13 @@
             <div class="navbar-nav ml-auto">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php">INICIO <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="productos.html">PRODUCTOS <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="productos.php">PRODUCTOS <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
+                        <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
@@ -69,25 +69,25 @@
 <!--  los mas vendidos  -->
 <div class="productos-mas-vendidos">
     
-    <img class="los-mas-vendidos" width="700px" src="img/los mas vendidos.png" alt="logotipo" class="logo">
+    <img class="los-mas-vendidos" width="700px" src="img/los mas vendidos.png" alt="logotipo" class="logo" class="img-fluid">
     
     <div class="row">
         <div class="col-md-6 col-lg-4">
-            <img class="foto"  src="img/apple-iphone-x--1.jpg" alt="Iphone X">
+            <a href="producto2.php"><img class="foto"  src="img/apple-iphone-x--1.jpg" alt="Iphone X"></a>
             <img class="oferta" src="img/super sale .png" alt="supersale">
-            <h2>Iphone X 256 gb</h2>
+            <a href="producto2.php"><h2>Iphone X 256 gb</h2></a>
             <p class="index">ARS $85.000</p>
         </div>   
         <div class="col-md-6 col-lg-4">
-            <img class="foto" src="img/samsung-galaxy-s9-001.jpg" alt="Samsung s9">
+            <a href="producto5.php"><img class="foto" src="img/samsung-galaxy-s9-001.jpg" alt="Samsung s9"></a>
             <img class="oferta" src="img/super sale .png" alt="supersale"> 
-            <h2>Samsung S9</h2>
+            <a href="producto5.php"><h2>Samsung S9</h2></a>
             <p class="index">ARS $29.000</p>   
         </div>
         <div class="col-md-6 col-lg-4">
-            <img class="foto" src="img/moto-g6.jpeg" alt="Motorola G6">
+            <a href="producto8.php"><img class="foto" src="img/moto-g6.jpeg" alt="Motorola G6"></a>
             <img class="oferta" src="img/super sale .png" alt="supersale">  
-            <h2>Motorola G6</h2>
+            <a href="producto8.php"><h2>Motorola G6</h2></a>
             <p class="index">ARS $16.000</p>
         </div>   
     </div>
@@ -96,7 +96,7 @@
 <!--  BARRA DE PIE DE PAGINA  -->
 <footer>
 <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-    <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
+    <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

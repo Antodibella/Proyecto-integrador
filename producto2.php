@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Iphone 8 - Tecno Movil</title>
+    <title>Iphone X - Tecno Movil</title>
 </head>
 <body class="producto">
    <!--  BARRA DE INICIO -->
@@ -20,13 +20,13 @@
         <div class="navbar-nav ml-auto">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">INICIO <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="productos.html">PRODUCTOS <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="productos.php">PRODUCTOS <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
+                    <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
@@ -41,13 +41,14 @@
     <div class="products">
         <div class="row">
             <div class="col-md-9 col-lg-4">
-                    <img src="img/iphone-8-03.png" alt="logotipo" class="img-fluid mb-3">
+                <br>
+                    <img src="img/apple-iphone-x--1.jpg" alt="logotipo" class="img-fluid mb-3">
                                 
             </div>
             <div class="row-description">
                 
                 <ul>
-                    <li><h2>IPHONE 8 64gb</h2></li>
+                    <h2>IPHONE X 256 GB</h2>
                     <hr>
                     <li>Liberado</li>
                     <li>Procesador Apple A11 Bionic (10 nm) - 2 GB</li>
@@ -56,10 +57,10 @@
                     <li>Cámara delantera 7 MP f/2.2</li>
                     <li>Bateria 1821 mAh con cárga inalámbrica</li>
                     <li>Resistencia al agua y al polvo IP67</li>
-                    <li>Memoria interna: <strong> 64 GB</strong></li>
+                    <li>Memoria interna: <strong> 256 GB</strong></li>
                 </ul>
                 <hr>
-                <ul><li><strong>PRECIO: 65.000 ARS</strong></li></ul>
+                <ul><li><strong>PRECIO: 85.000 ARS</strong></li></ul>
                 <button type="button" class="btn btn-outline-success">Comprar ahora</button>
                 <button type="button" class="btn btn-outline-primary">Agregar al carrito</button>
             </div>

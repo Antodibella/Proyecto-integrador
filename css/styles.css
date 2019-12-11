@@ -382,7 +382,6 @@ font-weight: bold;
     color: white !important;
     text-decoration: none;
 }
-<<<<<<< HEAD
 
 /* PRODUCTOS SAlE index */
 
@@ -396,13 +395,3 @@ font-weight: bold;
     margin-top: 15px;
     padding-left: 50px;
 }
-=======
- /* PERFIL* /
- .botonSalir{
-     float:right;
- }
- /* ERRORES */
- .errores{
-     text-align: center;
- }
->>>>>>> 9870157083d496239cc24c173845cb031496d762
