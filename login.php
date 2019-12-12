@@ -4,15 +4,17 @@ session_start();
 // Inicio errores
 $errores = [];
 $db = file_get_contents('usuario.json');
-$usuario = json_decode($db, true);
+$usuarios = json_decode($db, true);
 if ($_POST) {
     if (strlen($_POST['email']) < 3) {
         $errores['email'] = 'El email de usuario no es correcto';
     }
-    $usuario = $usuario[array_search($_POST['email'], array_column($usuario, 'email'))];
-    if (!$usuario) {
+    $id = array_search($_POST['email'], array_column($usuarios, 'email'));
+    if($id === false){
         $errores['email'] = 'El email no existe';
     } else {
+
+        $usuario = $usuarios[$id];
         if (password_verify($_POST['password'], $usuario['password'])) {
             $_SESSION['usuario'] = $usuario;
             if($_POST['recordarme'] == true){
@@ -130,6 +132,7 @@ if ($_POST) {
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav m-auto">
                 <a class="nav-item nav-link active" href="contacto.html">Quienes Somos <span class="sr-only">(current)</span></a>

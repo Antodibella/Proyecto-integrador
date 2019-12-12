@@ -122,10 +122,10 @@ if ($_POST){
         <br> 
         <br> 
         Plan Ahora 12 20%+ A Través de TODOPAGO
-        <br><br>
+        <br><br><br>
         <h3>Transferencia o depósito bancario.</h3> 
         <br>
-        <p> En todos estos casos se toma el mismo precio publicado en nuestra web
+        <p> En todos estos casos se toma el mismo precio publicado en nuestra web</p> 
             
         </div>   
         <div class="col-md-6">

@@ -1,9 +1,11 @@
 <?php
 session_start();
+/* session_destroy();
+print_r($_SESSION);exit; */
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
 } else {
-    header('Location: perfil.php');
+    header('Location: login.php');
 }
 if ($_POST) {
     if ($_POST['salir'] == 'Salir') {
@@ -12,19 +14,20 @@ if ($_POST) {
         header('Location: login.php');
     }
 }
+$errores = [];
 if ($_FILES) {
-if ($_FILES["imagen"]["error"] != 0){
-if ("HAY ERROR EN LA IMAGEN") {
-echo "Hubo un error en el archivo";
-}
- else { $ext = pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
- if ($ext != "jpg" ){
-     echo "El archivo debe ser .jpg";
- }
- else {
-     move_uploaded_file($_FILES["imagen"]["tmp_name"], "archivos/imagen." .  $ext);
- }
- }}
+    if ($_FILES["imagen"]["error"] != 0){
+    
+        $errores['imagen'] = "Hubo un error en el archivo";
+    } else { 
+        $ext = pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
+        if ($ext == "jpg" || $ext == "png" || $ext == "jpeg" ){
+            move_uploaded_file($_FILES["imagen"]["tmp_name"], "archivos/{$usuario['id']}." .  $ext);
+        }
+        else {
+            $errores['imagen'] = "El archivo debe ser .jpg , .jpeg o .png";
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -81,60 +84,71 @@ echo "Hubo un error en el archivo";
             </ul>
             
 
-           
-            <form action="" action="miperfil.php" method="post" enctype="multipart/form-data">
-            <div class="">
-               
-               <label for="">Foto de Perfil</label>
-               <input type="file" name="imagen">
-               
+           <?php if(file_exists('archivos/'.$usuario['id'].'.jpg')):?>
+            <div class="text-center" width="200px">
+            <img class="rounded mx-auto d-block" src="archivos/<?=$usuario['id']?>.jpg" alt="">
             </div>
-            <div>
-            <input type="submit" class="btn btn-secondary" value="Enviar"></input>
-            </div>
+            <?php endif;?>
+            <form action="miperfil.php" method="POST" enctype="multipart/form-data">
+                <div class="">
+                
+                <label for="">Foto de Perfil</label>
+                <input type="file" name="imagen">
+                
+                </div>
+                <div>
+                <input type="submit" class="btn btn-secondary" value="Enviar"></input>
+                </div>
             </form>
-
+           
             <hr>
         <form action="miperfil.php" method="post"> <input type='submit' class="btn btn-secondary" name='salir' value='Salir' /> </form>   
         <br>
-        <form action="miperfil.php">
-<button onclick="document.getElementById('id01').style.display='block'" class="btn btn-secondary" style="width:auto;">Editar mi perfil</button>
 
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php">
-    <div class="container">
-      <h1>Editar mi perfil</h1>
-      <p>Por favor complete todo los campos</p>
-      <hr>
-      <label for="name"><b>Nombre</b></label>
-      <input type="text" placeholder="Escriba su Nombre" name="name" required>
-        <br><br>
-        <label for="surname"><b>Apellido</b></label>
-      <input type="text" placeholder="Escriba su Apellido" name="surname" required>
-        <br><br>  
-      <label for="email"><b>Email</b></label>
-      <input type="text" placeholder="Escriba su Email" name="email" required>
-        <br><br>
-        <label for="email"><b>Usuario</b></label>
-      <input type="text" placeholder="Escriba su Usuario" name="username" required>
-        <br><br>
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Escriba su contraseña" name="password" required>
-       <br><br>
-        
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#editar">
+  Editar mis datos
+</button>
 
-      
-
-      <div class="clearfix">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="btn btn-secondary">Salir</button>
-        <button type="submit" class="btn btn-secondary">Guardar Cambios</button>
+<!-- Modal -->
+<div class="modal fade" id="editar" tabindex="-1" role="dialog" aria-labelledby="editarLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editarLabel">Editar Perfil</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <br><br>
+      <div class="modal-body">
+        <form method="POST" action="miperfil.php">
+     
+            <p>Por favor complete todo los campos</p>
+            <label for="name"><b>Nombre</b></label>
+            <input type="text" placeholder="Escriba su Nombre" name="name" required>
+                <br><br>
+                <label for="surname"><b>Apellido</b></label>
+            <input type="text" placeholder="Escriba su Apellido" name="surname" required>
+                <br><br>  
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Escriba su Email" name="email" required>
+                <br><br>
+                <label for="email"><b>Usuario</b></label>
+            <input type="text" placeholder="Escriba su Usuario" name="username" required>
+                <br><br>
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Escriba su contraseña" name="password" required>
+            <br><br>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      
+            <br><br>
+        </form>
+      </div>
     </div>
-  </form>
-  </form>
+  </div>
 </div>
+
 <hr>
                 
 <section>
@@ -165,5 +179,9 @@ echo "Hubo un error en el archivo";
     </div>
 </nav>
 </footer>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </body>
 </html>

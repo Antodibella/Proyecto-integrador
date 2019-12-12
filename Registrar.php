@@ -117,18 +117,18 @@ if ($_POST){
                         "username" => $_POST["username"],
                         "email" => $_POST["email"],
                         "password" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
-                        "password1" => $hash = password_hash($_POST["password1"], PASSWORD_DEFAULT), 
                         "city" => $_POST["city"],
                         "country" => $_POST["country"],
                         "email" => $_POST["email"],
                         "cp" => $_POST["cp"],
                         "id" => $id,
+                        "promociones" => $_POST["promociones"],
                      ];
        $db = json_encode ($usuario);
 
        file_put_contents("usuario.json", $db);
 
-       header('Location: perfil.php');
+       header('Location: miperfil.php');
     } }
                                     
 ?>
@@ -236,7 +236,7 @@ if ($_POST){
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" name="promociones   " for="gridCheck">
+                    <label class="form-check-label" name="promociones" for="gridCheck">
                         Quiero recibir promociones
                     </label>
                     <br>
