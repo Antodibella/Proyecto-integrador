@@ -49,7 +49,7 @@ if ($_POST) {
     <!--  BARRA DE INICIO -->
     <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
-    <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
+    <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -57,13 +57,13 @@ if ($_POST) {
         <div class="navbar-nav ml-auto">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">INICIO <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="productos.html">PRODUCTOS <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="productos.php">PRODUCTOS <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
+                    <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
