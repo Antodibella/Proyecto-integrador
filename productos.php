@@ -12,7 +12,7 @@
     <!--  BARRA DE INICIO -->
     <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
-    <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
+    <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,10 +20,10 @@
         <div class="navbar-nav ml-auto">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.html">INICIO <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php">INICIO <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="productos.html">PRODUCTOS <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="productos.php">PRODUCTOS <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
@@ -43,45 +43,45 @@
         
         
         <div class="col-md-5 col-lg-4">
-            <a href="producto1.html"><img src="img/iphone-8-03.png" alt="logotipo" class="img-fluid" width="300px"></a> 
-            <a href="producto1.html"><h2>Iphone 8</h2></a>
+            <a href="producto1.php"><img src="img/iphone-8-03.png" alt="logotipo" class="img-fluid" width="300px"></a> 
+            <a href="producto1.php"><h2>Iphone 8</h2></a>
             <p>ARS $65.000</p>
             <br>
-            <a href="producto4.html"><img src="img/samsung-s8-01.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
-            <a href="producto2.html"><h2>Samsung S8</h2></a>
-            <p>ARS $47.000</p>
+            <a href="producto4.php"><img src="img/samsung-s8-01.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
+            <a href="producto4.php"><h2>Samsung S8</h2></a>
+            <p>ARS $27.000</p>
             <br>
-            <img src="img/moto-g5.webp" alt="logotipo" class="img-fluid" width="300px">
-            <a href="producto7.html"><h2>Motorola G5</h2></a>
+            <a href="producto7.php"><img src="img/moto-g5.webp" alt="logotipo" class="img-fluid" width="300px"></a>
+            <a href="producto7.php"><h2>Motorola G5</h2></a>
             <p>ARS $8.500</p>
             <br>
         </div>
         <div class="col-md-5 col-lg-4">
-            <a href="producto2.html"><img src="img/apple-iphone-x--1.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
+            <a href="producto2.php"><img src="img/apple-iphone-x--1.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
             <br>
-            <a href="producto2.html"><h2>Iphone X 256 gb</h2></a>
+            <a href="producto2.php"><h2>Iphone X 256 gb</h2></a>
             <p>ARS $85.000 </p> 
             <br>
-            <img src="img/samsung-galaxy-s9-001.jpg" alt="logotipo" class="img-fluid" width="300px">
-            <a href="producto5.html"><h2>Samsung S9</h2></a>
+            <a href="producto5.php"><img src="img/samsung-galaxy-s9-001.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
+            <a href="producto5.php"><h2>Samsung S9</h2></a>
             <p>ARS $29.000</p>
             <br>
-            <img src="img/moto-g6.jpeg" alt="logotipo" class="img-fluid" width="300px">
-            <a href="producto8.html"><h2>Motorola G6</h2></a>
+            <a href="producto8.php"><img src="img/moto-g6.jpeg" alt="logotipo" class="img-fluid" width="300px"></a>
+            <a href="producto8.php"><h2>Motorola G6</h2></a>
             <p>ARS $16.000</p>
             <br>
         </div>
         <div class="col-md-5 col-lg-4">
-            <a href="producto3.html"><img src="img/apple-iphone-11-pro-1.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
-            <a href="producto3.html"><h2>Iphone 11 PRO</h2></a>
+            <a href="producto3.php"><img src="img/apple-iphone-11-pro-1.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
+            <a href="producto3.php"><h2>Iphone 11 PRO</h2></a>
             <p>ARS $125.000</p>
             <br>
-            <img src="img/samsung-galaxy-S10plus.jpg" alt="logotipo" class="img-fluid" width="300px">
-            <a href="producto6.html"><h2>Samsung S10 Plus</h2></a>
+            <a href="producto6.php"><img src="img/samsung-galaxy-S10plus.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
+            <a href="producto6.php"><h2>Samsung S10 Plus</h2></a>
             <p>ARS $125.000</p>
             <br>
-            <img src="img/moto-g7.jpg" alt="logotipo" class="img-fluid" width="300px">
-            <a href="producto9.html"><h2>Motorola G7</h2></a>
+            <a href="producto9.php"><img src="img/moto-g7.jpg" alt="logotipo" class="img-fluid" width="300px"></a>
+            <a href="producto9.php"><h2>Motorola G7</h2></a>
             <p>ARS $18.000</p>
             <br>
         </div>
@@ -102,7 +102,7 @@
             <div class="navbar-nav m-auto">
                 <a class="nav-item nav-link active" href="contacto.html">Quienes Somos <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="preguntas.php">Ayuda<span class="sr-only">(current)</span></a>
                 <!--     <i class="fab fa-twitter"></i>
                 <i class="fab fa-facebook-f"></i>
                 -->

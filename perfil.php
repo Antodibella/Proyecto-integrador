@@ -1,3 +1,20 @@
+<?php
+session_start();
+if (isset($_POST['email'])) {
+    $db = file_get_contents('usuario.json');
+    $usuario = json_decode($db, true);
+    foreach($usuario as $u){
+        if($u['email'] == $_POST['email']){
+            $usuario = $u;
+        }
+    }
+    if(isset($_SESSION['usuario']) && $usuario['id'] == $_SESSION['usuario']['id']){
+        $es_usuario_autenticado = true;
+    } else {
+        $es_usuario_autenticado = false;
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +23,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Iphone 8 - Tecno Movil</title>
+    <title>Preguntas Frecuentes - Tecno Movil</title>
 </head>
-<body class="producto">
+<body class="perfilbody">
    <!--  BARRA DE INICIO -->
-<header>
+   <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
     <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,7 +43,7 @@
                     <a class="nav-link" href="productos.html">PRODUCTOS <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
+                    <a class="nav-link" href="preguntas.html" tabindex="-1" aria-disabled="true">AYUDA</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
@@ -36,48 +53,32 @@
     </div>
 </nav>
 </header>
-<!-- Descripcion del procucto -->
 <section>
-    <div class="products">
-        <div class="row">
-            <div class="col-md-9 col-lg-4">
-                <br>
-                    <img src="img/apple-iphone-x--1.jpg" alt="logotipo" class="img-fluid mb-3">
-                                
-            </div>
-            <div class="row-description">
-                
-                <ul>
-                    <li><h2>IPHONE X 256 GB</h2></li>
-                    <hr>
-                    <li>Liberado</li>
-                    <li>Procesador Apple A11 Bionic (10 nm) - 2 GB</li>
-                    <li>Pantalla 4.7" IPS LCD de 750 x 1334 pixeles</li>
-                    <li>Cámara trasera de 12 MP f/1.8</li>
-                    <li>Cámara delantera 7 MP f/2.2</li>
-                    <li>Bateria 1821 mAh con cárga inalámbrica</li>
-                    <li>Resistencia al agua y al polvo IP67</li>
-                    <li>Memoria interna: <strong> 256 GB</strong></li>
-                </ul>
-                <hr>
-                <ul><li><strong>PRECIO: 85.000 ARS</strong></li></ul>
-                <button type="button" class="btn btn-outline-success">Comprar ahora</button>
-                <button type="button" class="btn btn-outline-primary">Agregar al carrito</button>
-            </div>
+    <?php if (isset($usuario)) : ?>
+        <div style="width: 400px; margin:0 auto;">
+            <h1>Perfil 
+                <?php if($es_usuario_autenticado): ?>
+                <span> <a href="miperfil.php">Editar mi perfil</a></span>
+                <?php endif;?>
+            </h1>
+            <hr>
+            <ul>
+                <li><strong>Nombre: </strong><?= $usuario['name'] ?></li>
+                <li><strong>Email: </strong><?= $usuario['email'] ?></li>
+                <li><strong>Usuario: </strong><?= $usuario['username'] ?></li>
+            </ul>
+        </div>
+    <?php else : ?>
+        <div>
+            <h1>Usuario desconocido</h1>
+            <form action="miperfil.php" method="post"> <input type='submit' class="btn btn-secondary" name='salir' value='Salir' />
             
-        </div>   
-      
-        
-        
-    </div> 
-    <br><br>
-    <br><br>
-    <br><br>
-    <br>
-</section>
- <!--  BARRA DE PIE DE PAGINA  -->
-<footer>
- <nav class="navbar navbar-expand-lg navbar-light ">
+       </form>  
+        </div>
+    <?php endif; ?>
+    </section>
+    <footer>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-bottom">
     <a href="index.html"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -87,12 +88,10 @@
             <a class="nav-item nav-link active" href="contacto.html">Quienes Somos <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
             <a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
-            <!--     <i class="fab fa-twitter"></i>
-            <i class="fab fa-facebook-f"></i>
-            -->
+            
         </div>
     </div>
 </nav>
-</footer>
-    </body>
-    </html>
+    </footer>
+</body>
+</html>
