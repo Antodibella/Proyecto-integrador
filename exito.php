@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Preguntas Frecuentes - Tecno Movil</title>
+    <title>Exito al enviar formulario - Tecno Movil</title>
 </head>
 <body class="preguntasbody">
    <!--  BARRA DE INICIO -->
@@ -30,6 +30,18 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
+                </li>
+                <li class="shopping-bag-button">
+                    <a href="carrito.php" class="tools_button">
+                        <i class="fas fa-cart-plus"></i>
+                        <span class="tools_button_icon">
+                        
+                        </span>
+                        <span class="shopping_bag_items_number">
+
+                        </span>
+                    </a>
+
                 </li>
             </ul>       
         </div>

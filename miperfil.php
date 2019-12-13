@@ -1,24 +1,16 @@
 <?php
 session_start();
-/* session_destroy();
-print_r($_SESSION);exit; */
 if (isset($_SESSION['usuario'])) {
     $usuario = $_SESSION['usuario'];
 } else {
     header('Location: login.php');
 }
-if ($_POST) {
-    if ($_POST['salir'] == 'Salir') {
-        session_destroy();
-        setcookie('usuario','',-1);
-        header('Location: login.php');
-    }
-}
+
 $errores = [];
 if ($_FILES) {
     if ($_FILES["imagen"]["error"] != 0){
     
-        $errores['imagen'] = "Hubo un error en el archivo";
+        /* $errores['imagen'] = "Hubo un error en el archivo"; */
     } else { 
         $ext = pathinfo($_FILES["imagen"]["name"], PATHINFO_EXTENSION);
         if ($ext == "jpg" || $ext == "png" || $ext == "jpeg" ){
@@ -28,6 +20,69 @@ if ($_FILES) {
             $errores['imagen'] = "El archivo debe ser .jpg , .jpeg o .png";
         }
     }
+}
+if($_POST){
+    if(isset($_POST["name"])){
+        if( empty($_POST['name']) ) {
+            $errores['name'] = "El campo Nombre debe completarse.";
+        }
+        elseif( strlen($_POST['name']) < 2 ) {
+            $errores['name'] = "Tu nombre debe tener al menos 2 caracteres.";
+            }
+    }
+    if( isset($_POST['surname']) ) {
+        if( empty($_POST['surname']) ) {
+            $errores['surname'] = "El campo apellido debe completarse.";
+        }
+        elseif( strlen($_POST['surname']) < 2 ) {
+            $errores['surname'] = "Tu apellido debe tener al menos 2 caracteres.";
+        }
+    }
+    if( isset($_POST['password']) ) {
+        if( empty($_POST['password']) ) {
+            $errores['password'] = "El campo contraseña debe completarse.";
+        }
+        elseif( strlen($_POST['password']) < 6 ) {
+            $errores['password'] = "Tu contraseña debe tener al menos 6 caracteres.";
+        }
+    }
+    if( isset($_POST['password1']) ) {
+        if( empty($_POST['password1']) ) {
+            $errores['password1'] = "confirme la contraseña.";
+        }
+        elseif( strlen($_POST['password1']) < 6 ) {
+            $errores['password1'] = "Tu confirmacion de contraseña no es correcta.";
+        }
+    }
+    if(($_POST["password"]) != ($_POST["password1"]) ){
+        $errores['password1'] = "Las contraseñas no coinciden";
+    } 
+}
+/* 
+Notice: Undefined index: salir in C:\laragon\www\Proyecto-integrador\Proyecto-integrador\miperfil.php on line 64
+
+Notice: Undefined index: guardar in C:\laragon\www\Proyecto-integrador\Proyecto-integrador\miperfil.php on line 68
+*/
+if(count($errores) == 0){
+    if($_POST){
+        if($_POST['salir'] == 'Salir'){
+            session_destroy();
+            setcookie('usuario','',-1);
+            header('Location: login.php');
+        }else if(($_POST['guardar'] == 'Guardar Cambios')){
+
+        $db = file_get_contents("usuario.json");
+        $usuario = json_decode($db, true);
+        
+        $usuario['nombre'] = $_POST["name"];
+        $usuario['apellido'] = $_POST["surname"];
+        $usuario['password'] = $hash = password_hash($_POST["password"], PASSWORD_DEFAULT); 
+        $db = json_encode ($usuario);
+    
+        file_put_contents("usuario.json", $db);
+    }
+        }
+      
 }
 ?>
 <!DOCTYPE html>
@@ -68,10 +123,12 @@ if ($_FILES) {
     </div>
 </nav>
 </header>
-    <section>
-        <center>
+    <section class="miperfil">
+        
+
+        
         <?php if (isset($usuario)) : ?>
-            <br>
+           
             <br>
             <br>
         <h1>Mi Perfil </h1>
@@ -85,21 +142,18 @@ if ($_FILES) {
             
 
            <?php if(file_exists('archivos/'.$usuario['id'].'.jpg')):?>
+            <label for=""><b> Foto de Perfil:</b></label>
             <div class="text-center" width="200px">
-            <img class="rounded mx-auto d-block" src="archivos/<?=$usuario['id']?>.jpg" alt="">
+            <img class="fotoperfil" src="archivos/<?=$usuario['id']?>.jpg" alt="">
             </div>
             <?php endif;?>
-            <form action="miperfil.php" method="POST" enctype="multipart/form-data">
-                <div class="">
-                
-                <label for="">Foto de Perfil</label>
-                <input type="file" name="imagen">
-                
-                </div>
-                <div>
-                <input type="submit" class="btn btn-secondary" value="Enviar"></input>
-                </div>
-            </form>
+            <?php if(count($errores)) : ?>                   
+                    <ul>
+                        <?php foreach($errores as $error): ?>
+                            <li><strong><?=$error?></strong></li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?> 
            
             <hr>
         <form action="miperfil.php" method="post"> <input type='submit' class="btn btn-secondary" name='salir' value='Salir' /> </form>   
@@ -121,26 +175,31 @@ if ($_FILES) {
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST" action="miperfil.php">
+        <form method="POST" action="miperfil.php" enctype="multipart/form-data">
      
             <p>Por favor complete todo los campos</p>
-            <label for="name"><b>Nombre</b></label>
-            <input type="text" placeholder="Escriba su Nombre" name="name" required>
+            
+            <label for="name"><b>Nombre:</b></label>
+            <br>
+            <input type="text" placeholder="Escriba su Nombre" name="name" value="<?= $usuario['nombre'] ?>" required>
                 <br><br>
-                <label for="surname"><b>Apellido</b></label>
-            <input type="text" placeholder="Escriba su Apellido" name="surname" required>
+                <label for="surname"><b>Apellido:</b></label>
+                <br>
+            <input type="text" placeholder="Escriba su Apellido" name="surname" value="<?= $usuario['apellido'] ?>" required>
                 <br><br>  
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Escriba su Email" name="email" required>
-                <br><br>
-                <label for="email"><b>Usuario</b></label>
-            <input type="text" placeholder="Escriba su Usuario" name="username" required>
-                <br><br>
-            <label for="psw"><b>Password</b></label>
+                <label for="psw"><b>Contraseña:</b></label>
+                <br>
             <input type="password" placeholder="Escriba su contraseña" name="password" required>
+                <br><br>
+            <label for="psw"><b>Contraseña:</b></label>
+            <br>
+            <input type="password" placeholder="Confirme su contraseña" name="password1" required>
+            <br><br>
+            <b> Cambiar foto</b><br><br>
+                <input type="file" name="imagen">
             <br><br>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary" name="guardar">Guardar Cambios</button>
       
             <br><br>
         </form>
@@ -154,7 +213,7 @@ if ($_FILES) {
 <section>
 
         <?php endif; ?>    
-        </center> 
+        
 </section>
 <br>
 <br>
