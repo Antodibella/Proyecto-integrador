@@ -73,7 +73,7 @@ if(count($errores) == 0){
                
                 <li class="nav-item dropdown">
                 
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></strong><?= $usuario['nombre'] ?></a>
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></strong><?= isset($usuario['nombre']) ? $usuario['nombre'] : '' ?></a>
     <div class="dropdown-menu">
     <a class="dropdown-item" href="miperfil.php">Mi Perfil</a>
     </a><form action="index.php" method="post"> <input type='submit' a class="dropdown-item" name='salir' value='Salir' /> </form>
