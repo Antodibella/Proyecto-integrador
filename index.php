@@ -86,6 +86,8 @@ if(count($errores) == 0){
    
 </header>
 <!-- para hacer el commit -->
+<div>
+</div>
 <!--  Banner  -->
 <section>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
