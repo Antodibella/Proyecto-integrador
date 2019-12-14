@@ -1,3 +1,38 @@
+<?php
+session_start();
+if (isset($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
+} else {
+    header('Location');
+}
+
+$errores = [];
+
+if(count($errores) == 0){
+    if($_POST){
+        if($_POST['salir'] == 'Salir'){
+            session_destroy();
+            setcookie('usuario','',-1);
+            header('Location: login.php');
+        }else if(($_POST['guardar'] == 'Guardar Cambios')){
+
+        $db = file_get_contents("usuario.json");
+        $usuario = json_decode($db, true);
+        
+        $usuario['nombre'] = $_POST["name"];
+        $usuario['apellido'] = $_POST["surname"];
+        $usuario['password'] = $hash = password_hash($_POST["password"], PASSWORD_DEFAULT); 
+        $db = json_encode ($usuario);
+    
+        file_put_contents("usuario.json", $db);
+    }
+        }
+      
+}
+    
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,16 +64,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
                     </li>
+                    <li>
+                <a class="fas fa-shopping-cart"  href= "carrito.php" ></a>
+                </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
                     </li>
-                    <li>
-                <i class="fas fa-shopping-cart"></i>
-                </li>
+               
+                <li class="nav-item dropdown">
+                
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></strong><?= $usuario['nombre'] ?></a>
+    <div class="dropdown-menu">
+    <a class="dropdown-item" href="miperfil.php">Mi Perfil</a>
+    </a><form action="index.php" method="post"> <input type='submit' a class="dropdown-item" name='salir' value='Salir' /> </form>
+      
+    </div>
                 </ul>       
             </div>
         </div>
     </nav>
+   
 </header>
 
 <!--  Banner  -->
