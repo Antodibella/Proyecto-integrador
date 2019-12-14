@@ -32,6 +32,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
                     </li>
+                    <li>
+                <i class="fas fa-shopping-cart"></i>
+                </li>
                 </ul>       
             </div>
         </div>

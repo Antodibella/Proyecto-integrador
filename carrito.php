@@ -76,7 +76,7 @@ $sHTML .= '<br>------------------<br>Precio total: ' . $fPrecioTotal;
                     <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
                 </li>
                 <li>
-                    <i class="fas fa-cart-plus"></i>
+                <i class="fas fa-shopping-cart"></i>
                 </li>
             </ul>       
         </div>

@@ -65,6 +65,7 @@ if ($_POST){
     <title>Preguntas Frecuentes - Tecno Movil</title>
 </head>
 <body class="preguntasbody">
+
    <!--  BARRA DE INICIO -->
    <header>
    <nav class="navbar navbar-expand-lg navbar-light ">
@@ -88,8 +89,7 @@ if ($_POST){
                     <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
                 </li>
                 <li>
-                    <i class="fas fa-cart-plus"></i>
-                </li>
+                    <i class="fas fa-shopping-cart" href="carrito.php" ></i></li>
             </ul>       
         </div>
     </div>
@@ -98,6 +98,7 @@ if ($_POST){
 
 <!--  Formas de pago  -->
 <section>
+
 <img id="imgpreguntas" src="img/formas de pago.png" alt="consulta" width="50%">
 <br>
 <div class="errores">
@@ -151,7 +152,8 @@ if ($_POST){
             
         </div>  
         
-    </div>        
+    </div>    
+    </section>    
     <!--  PREGUNTAS  -->
     
     <br>

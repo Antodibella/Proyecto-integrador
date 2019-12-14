@@ -412,3 +412,8 @@ font-weight: bold;
 .errores{
     text-align: center;
 }
+
+.navbar-nav .fas{
+   font-size: 20px;
+   margin-top: 12px;
+}
