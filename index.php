@@ -65,7 +65,7 @@ if(count($errores) == 0){
                         <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
                     </li>
                     <li>
-                <a class="fas fa-shopping-cart"  href= "carrito.php" ></a>
+                <a class="fas fa-shopping-cart black"  href= "carrito.php" ></a>
                 </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
@@ -75,7 +75,7 @@ if(count($errores) == 0){
                 
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"></strong><?= isset($usuario['nombre']) ? $usuario['nombre'] : '' ?></a>
     <div class="dropdown-menu">
-    <a class="dropdown-item" href="miperfil.php">Mi Perfil</a>
+    <a class="dropdown-item"  href="miperfil.php">Mi Perfil</a>
     </a><form action="index.php" method="post"> <input type='submit' a class="dropdown-item" name='salir' value='Salir' /> </form>
       
     </div>
@@ -85,7 +85,9 @@ if(count($errores) == 0){
     </nav>
    
 </header>
-
+<!-- para hacer el commit -->
+<div>
+</div>
 <!--  Banner  -->
 <section>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
