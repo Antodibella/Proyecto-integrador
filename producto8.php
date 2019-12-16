@@ -83,7 +83,7 @@ if (isset($_SESSION['usuario'])) {
                 </ul>
                 <hr>
                 <ul><li><strong>PRECIO: 16.000 ARS</strong></li></ul>
-                <button type="button" class="btn btn-outline-success">Comprar ahora</button>
+                <button type="button" class="btn btn-outline-success"><a href="carrito.php?nombre=Motorola-Moto-G6&precio=16000">Comprar ahora</button></a>
                 <button type="button" class="btn btn-outline-primary">Agregar al carrito</button>
             </div>
             

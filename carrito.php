@@ -4,36 +4,6 @@ $aCarrito = array();
 $sHTML = '';
 $fPrecioTotal = 0;
 
-session_start();
-if (isset($_SESSION['usuario'])) {
-    $usuario = $_SESSION['usuario'];
-} else {
-    header('Location');
-}
-
-$errores = [];
-
-if(count($errores) == 0){
-    if($_POST){
-        if($_POST['salir'] == 'Salir'){
-            session_destroy();
-            setcookie('usuario','',-1);
-            header('Location: login.php');
-        }else if(($_POST['guardar'] == 'Guardar Cambios')){
-            
-            $db = file_get_contents("usuario.json");
-            $usuario = json_decode($db, true);
-            
-            $usuario['nombre'] = $_POST["name"];
-            $usuario['apellido'] = $_POST["surname"];
-            $usuario['password'] = $hash = password_hash($_POST["password"], PASSWORD_DEFAULT); 
-            $db = json_encode ($usuario);
-            
-            file_put_contents("usuario.json", $db);
-        }
-    }
-    
-}
 //Vaciamos el carrito
 
 if(isset($_GET['vaciar'])) {
@@ -64,13 +34,13 @@ setcookie('carrito', serialize($aCarrito), $iTemCad);
 //Imprimimos el contenido del array
 
 foreach ($aCarrito as $key => $value) {
-	$sHTML .= '-> ' . $value['nombre'] . ' ' . $value['precio'] . '<br>';
+	$sHTML .= '1 - ' . $value['nombre'] . ' ' . $value['precio'] .  '<br>';
 	$fPrecioTotal += $value['precio'];
 }
 
 //Imprimimos el precio total
 
-$sHTML .= '<br>------------------<br>Precio total: ' . $fPrecioTotal;
+$sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
 
 ?>
 <!DOCTYPE html>
@@ -82,50 +52,36 @@ $sHTML .= '<br>------------------<br>Precio total: ' . $fPrecioTotal;
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <title>Mi carrito</title>
+    <title>Tecno Movil - Carrito</title>
     <body>
-       <!--  BARRA DE INICIO -->
-<header>
-
-<nav class="navbar navbar-expand-lg navbar-light ">
-<a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="barradeinicio">
-<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-<div class="navbar-nav ml-auto">
-<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-<li class="nav-item active">
-<a class="nav-link" href="index.php">INICIO <span class="sr-only">(current)</span></a>
-</li>
-<li class="nav-item active">
-<a class="nav-link" href="productos.php">PRODUCTOS <span class="sr-only">(current)</span></a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
-</li>
-<li>
-<a class="fas fa-shopping-cart black"  href= "carrito.php" ></a>
-</li>
-<li class="nav-item">
-<a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
-</li>
-<li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false"></strong><?= isset($usuario['nombre']) ? $usuario['nombre'] : '' ?></a>
-<div class="dropdown-menu">
-<a class="dropdown-item"  href="miperfil.php">Mi Perfil</a>
-</a><form action="index.php" method="post"> <input type='submit' a class="dropdown-item" name='salir' value='Salir' />
-</form>
-</div>
-</ul>       
-</div>
-</div>
+    <header>
+   <nav class="navbar navbar-expand-lg navbar-light ">
+    <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.php">INICIO <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="productos.php">PRODUCTOS <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="preguntas.php" tabindex="-1" aria-disabled="true">AYUDA</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.php" tabindex="-1" aria-disabled="true"><img src="img/usuario.png" alt="" width="25px"></a>
+                </li>
+                <li>
+                <i class="fas fa-shopping-cart"></i>
+                </li>
+            </ul>       
+        </div>
+    </div>
 </nav>
-</div>
-</header>
-<br>
-<br>
 <section class="carritocompra">
 
 <div class="jumbotron">
@@ -135,48 +91,54 @@ $sHTML .= '<br>------------------<br>Precio total: ' . $fPrecioTotal;
   <div>
 		<?php echo $sHTML; ?>
 	</div>
-	<ul>
-		<li><a href="carrito.php?nombre=iphone-8&precio=65000"img="img/iphone-8-03.png">Iphone 8</a></li>
-		<li><a href="carrito.php?nombre=Iphone-X&precio=85000">Iphone X 256 Gb</a></li>
-		<li><a href="carrito.php?nombre=Iphone-11&precio=125000">Iphone 11 PRO</a></li>
-		<li><a href="carrito.php?nombre=SamsumgS8&precio=47000">Samsung S8</a></li>
+	
+        <ul>
+        <!--
+		<li><a href="carrito.php?nombre=iphone-8&precio=65000"><img src="img/iphone-8-03.png" width= "60px">&nbsp &nbsp Iphone 8</a></li>
+        <br>
+		<li><a href="carrito.php?nombre=Iphone-X&precio=85000"><img src="img/apple-iphone-x--1.jpg" width= "60px"> &nbsp Iphone X 256 Gb</a></li>
+        <br>
+		<li><a href="carrito.php?nombre=Iphone-11&precio=125000"><img src="img/apple-iphone-11-pro-1.jpg" width= "60px"> &nbsp Iphone 11 PRO</a></li>
+        <br>
+		<li><a href="carrito.php?nombre=SamsumgS8&precio=47000"><img src="img/samsung-s8-01.jpg" width= "60px"> &nbsp Samsung S8</a></li>
+        <br>
 		<li><a href="carrito.php?nombre=SamsumgS9&precio=29000">Samsung S9</a></li>
+        <br>
 		<li><a href="carrito.php?nombre=SamsumgS10Plus&precio=125000">Samsung S10 Plus</a></li>
+        <br>
 		<li><a href="carrito.php?nombre=moto-G5&precio=8500">Motorola G5</a></li>
+        <br>
 		<li><a href="carrito.php?nombre=moto-G6&precio=16000">Motorola G6</a></li>
+        <br>
         <li><a href="carrito.php?nombre=moto-G7&precio=18000">Motorola G7</a></li>
-		<li><a href="carrito.php?vaciar=1">Vaciar Carrito</a></li>
+        -->
+        <br>
+        <button type="button" class="btn btn-success">Comprar</button>
+		<button type="button" class="btn btn-danger"><a href="carrito.php?vaciar=1">Vaciar Carrito</a></button>
 	</ul>	  
-
+ 
   
 </div>
 
 </section>
-<br><br><br>
- <!--  BARRA DE PIE DE PAGINA  -->
- <footer>
+<br><br><br><br><br><br><br><br>
+    <footer>
 <nav class="navbar navbar-expand-lg navbar-light ">
-<a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
-<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-<div class="navbar-nav m-auto">
-<a class="nav-item nav-link active" href="contacto.html">QuienesSomos<span class="sr-only">(current)</span></a>
-<a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
-<a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
-<!--     <i class="fab fa-twitter"></i>
-<i class="fab fa-facebook-f"></i>
--->
-</div>
-</div>
+    <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav m-auto">
+            <a class="nav-item nav-link active" href="contacto.php">Quienes Somos <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link active" href="preguntas.php">Ayuda<span class="sr-only">(current)</span></a>
+            <!--     <i class="fab fa-twitter"></i>
+            <i class="fab fa-facebook-f"></i>
+            -->
+        </div>
+    </div>
 </nav>
-
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
 </footer>
     </body>
     </html>
