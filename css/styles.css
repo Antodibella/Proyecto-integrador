@@ -120,6 +120,12 @@ border-color: white!important;
 background-color: #dc3545;
 height: 35px;
 }
+.btn-danger a{
+    color: white!important;
+    border-color: white!important;
+    background-color: #dc3545;
+    height: 35px;
+    }
 .btn-primary{
     background-color: #00ab4e!important;
     border-color: #00ab4e!important;
@@ -445,3 +451,31 @@ font-weight: bold;
     height: 60px;
  
   }
+
+  /* CREDIT CARD */
+.credit-card-div  span { padding-top:10px; }
+.credit-card-div img { padding-top:30px; }
+.credit-card-div .small-font { font-size:9px; }
+.credit-card-div .pad-adjust { padding-top:10px; }
+
+
+/* Form DAtos Cliente */
+
+
+.form-group-datos-cliente  span { 
+    padding-top:10px;
+ }
+
+.form-group-datos-cliente  img {
+     padding-top:30px;
+     }
+.form-group-datos-cliente  .small-font { 
+    font-size:9px; 
+}
+.form-group-datos-cliente  .pad-adjust { 
+    padding-top:10px; 
+}
+.form-group-datos-cliente {
+    width: 80%;
+    padding-left: 136px;
+}
