@@ -269,9 +269,9 @@ if ($_POST){
 </button>
 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 <div class="navbar-nav m-auto">
-<a class="nav-item nav-link active" href="contacto.html">QuienesSomos<span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="contacto.php">QuienesSomos<span class="sr-only">(current)</span></a>
 <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
-<a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="preguntas.php">Ayuda<span class="sr-only">(current)</span></a>
 <!--     <i class="fab fa-twitter"></i>
 <i class="fab fa-facebook-f"></i>
 -->

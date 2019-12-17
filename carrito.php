@@ -89,6 +89,7 @@ $sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
                
   <hr>
   <div>
+  
 		<?php echo $sHTML; ?>
 	</div>
 	
@@ -122,7 +123,7 @@ $sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
 
 </section>
 <br><br><br><br><br><br><br><br>
-    <footer>
+    <footer class="abajo">
 <nav class="navbar navbar-expand-lg navbar-light ">
     <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

@@ -8,7 +8,7 @@ if (isset($_POST['email'])) {
             $usuario = $u;
         }
     }
-    if(isset($_SESSION['usuario']) && $usuario['id'] == $_SESSION['usuario']['id']){
+    if(isset($_SESSION['usuario']) && $usuario['email'] == $_SESSION['usuario']['email']){
         $es_usuario_autenticado = true;
     } else {
         $es_usuario_autenticado = false;
@@ -24,7 +24,7 @@ if (isset($_POST['email'])) {
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <title>Preguntas Frecuentes - Tecno Movil</title>
+    <title>Perfil - Tecno Movil</title>
 </head>
 <body class="perfilbody">
    <!--  BARRA DE INICIO -->
@@ -100,9 +100,9 @@ if (isset($_POST['email'])) {
 </button>
 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 <div class="navbar-nav m-auto">
-<a class="nav-item nav-link active" href="contacto.html">QuienesSomos<span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="contacto.php">QuienesSomos<span class="sr-only">(current)</span></a>
 <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
-<a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="preguntas.php">Ayuda<span class="sr-only">(current)</span></a>
 <!--     <i class="fab fa-twitter"></i>
 <i class="fab fa-facebook-f"></i>
 -->

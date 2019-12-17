@@ -153,9 +153,9 @@ if ($_POST) {
         
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav m-auto">
-                <a class="nav-item nav-link active" href="contacto.html">Quienes Somos <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="contacto.php">QuienesSomos <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link active" href="Registrar.php">Registrarse <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link active" href="preguntas.html">Ayuda<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link active" href="preguntas.php  ">Ayuda<span class="sr-only">(current)</span></a>
                 
             </div>
         </div>
