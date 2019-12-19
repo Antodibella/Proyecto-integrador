@@ -38,22 +38,7 @@ if($_POST){
             $errores['surname'] = "Tu apellido debe tener al menos 2 caracteres.";
         }
     }
-    if( isset($_POST['password']) ) {
-        if( empty($_POST['password']) ) {
-            $errores['password'] = "El campo contraseña debe completarse.";
-        }
-        elseif( strlen($_POST['password']) < 6 ) {
-            $errores['password'] = "Tu contraseña debe tener al menos 6 caracteres.";
-        }
-    }
-    if( isset($_POST['password1']) ) {
-        if( empty($_POST['password1']) ) {
-            $errores['password1'] = "confirme la contraseña.";
-        }
-        elseif( strlen($_POST['password1']) < 6 ) {
-            $errores['password1'] = "Tu confirmacion de contraseña no es correcta.";
-        }
-    }
+   
     if(($_POST["password"]) != ($_POST["password1"]) ){
         $errores['password1'] = "Las contraseñas no coinciden";
     } 
@@ -65,17 +50,22 @@ if(count($errores) == 0){
             session_destroy();
             setcookie('usuario','',-1);
             header('Location: login.php');
-        }else if(($_POST['guardar'] == 'Guardar Cambios')){
+        }
+        if(isset($_POST['guardar'])){
 
         $db = file_get_contents("usuario.json");
         $usuarios = json_decode($db, true);
 
         $index = array_search($_SESSION['usuario']['email'],array_column($usuarios,'email'));
+   
         if($index !== false){
             $usuarios[$index]['nombre'] = $_POST["name"];
             $usuarios[$index]['apellido'] = $_POST["surname"];
             $usuarios[$index]['password'] =  password_hash($_POST["password"], PASSWORD_DEFAULT); 
         }
+
+        $_SESSION['usuario'] = $usuarios[$index];
+        //var_dump($usuarios,$index, $usuarios[$index]['nombre']);exit;
         $db = json_encode ($usuarios);
     
         file_put_contents("usuario.json", $db);
@@ -202,17 +192,17 @@ if(count($errores) == 0){
                 <br><br>  
                 <label for="psw"><b>Contraseña:</b></label>
                 <br>
-            <input type="password" placeholder="Escriba su contraseña" name="password" required>
+            <input type="password" placeholder="Escriba su contraseña" name="password" >
                 <br><br>
             <label for="psw"><b>Contraseña:</b></label>
             <br>
-            <input type="password" placeholder="Confirme su contraseña" name="password1" required>
+            <input type="password" placeholder="Confirme su contraseña" name="password1" >
             <br><br>
             <b> Cambiar foto</b><br><br>
                 <input type="file" name="imagen">
             <br><br>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="submit" class="btn btn-primary" name="guardar">Guardar Cambios</button>
+            <button type="submit" class="btn btn-primary" name="guardar"> Guardar Cambios</button>
       
             <br><br>
         </form>
