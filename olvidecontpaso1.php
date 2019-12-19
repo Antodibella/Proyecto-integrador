@@ -85,7 +85,7 @@ if (isset($_SESSION['usuario'])) {
                 <p>Enviaremos un codigo a tu mail para recuperar la cuenta</p>
                 <br>
                 
-                <button type="submit" class="boton1 ml-auto"> <a href="registrar.php"> Enviar codigo </a></button>
+                <button type="submit" class="boton1 ml-auto"> <a href="olvidecontpaso2.php"> Enviar codigo </a></button>
  
             </div>
          </div>
@@ -96,7 +96,7 @@ if (isset($_SESSION['usuario'])) {
 
 
   <!--  BARRA DE PIE DE PAGINA  -->
-<footer>
+<footer class="abajo">
 <nav class="navbar navbar-expand-lg navbar-light ">
 <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

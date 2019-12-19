@@ -5,6 +5,28 @@ if (isset($_SESSION['usuario'])) {
 } else {
     header('Location');
 }
+$errores = [];
+if($_POST){
+    if( isset($_POST['password']) ) {
+        if( empty($_POST['password']) ) {
+            $errores['password'] = "El campo contraseña debe completarse.";
+        }
+        elseif( strlen($_POST['password']) < 6 ) {
+            $errores['password'] = "Tu contraseña debe tener al menos 6 caracteres.";
+        }
+    }
+    if( isset($_POST['password1']) ) {
+        if( empty($_POST['password1']) ) {
+            $errores['password1'] = "El campo confirmar contraseña debe completarse.";
+        }
+        elseif( strlen($_POST['password1']) < 6 ) {
+            $errores['password1'] = "Tu confirmacion de contraseña no es correcta.";
+        }
+    }
+    if(($_POST["password"]) != ($_POST["password1"]) ){
+        $errores['password1'] = "Las contraseñas no coinciden";
+    } 
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,35 +89,42 @@ if (isset($_SESSION['usuario'])) {
 
       
     </div>            
-    <form class="formularioingresar" method="POST" action="login.php">  
+    <form class="formulariopassword" method="POST" action="">  
         
         <div class="form-row">
             <div class="form-group col-md-6 m-auto">
             <H1>Verifica que esta cuenta te pertenece</H1>
             <br>
+            <?php if(count($errores)) : ?>                   
+                    <ul>
+                        <?php foreach($errores as $error): ?>
+                            <li><strong><?=$error?></strong></li>
+                        <?php endforeach;?>
+                    </ul>
+                <?php endif;?>
             <br>
-                <label for="inputEmail4"> Email</label>
-                <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                <label for="password"> Contraseña Nueva</label>
+                <input name="password" type="password" class="form-control" placeholder="Contraseña">
                <br>
-                <label for="codigo"> Ingresa el codigo que enviamos a tu mail</label>
-                <input name="codigo" type="Codigo" class="form-control" id="codigo" placeholder="Codigo">
+               <label for="password1">Confirmar Nueva Contraseña </label>
+                <input name="password1" type="password" class="form-control" placeholder="Contraseña">
             </div>
         </div>
         <div class="form-row"> 
             <div class="form-group col-md-6  m-auto" >
 
-                <button type="submit" class="boton1 ml-auto"> <a href="registrar.php"> Recuperar mi cuenta </a></button>
+                <button type="submit" class="boton1 ml-auto">  Guardar Cambios</button>
  
             </div>
          </div>
         
     </div>
-    
+    </form>
     </section>
 
 
   <!--  BARRA DE PIE DE PAGINA  -->
-<footer>
+<footer class="abajo">
 <nav class="navbar navbar-expand-lg navbar-light ">
 <a href="index.php"><img src="img/LOGO.png" alt="logotipo" class="logo"></a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

@@ -136,7 +136,7 @@ if ($_POST) {
                 <button type="submit" class="boton1 ml-auto"> <a href="registrar.php"> Registrarme </a></button>
                     <br><br>
             
-                <a class="dropdown-item  m-auto" href=""> <a href="olvide.php"> Olvide mi contraseña</a>
+                <a class="dropdown-item  m-auto" href=""> <a href="olvidecontpaso1.php"> Olvide mi contraseña</a>
             </div>
          </div>
         
