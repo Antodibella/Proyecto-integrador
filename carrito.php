@@ -50,7 +50,7 @@ if ($_POST){
         if( empty($_POST['mesv']) ) {
             $errores['mesv'] = "El campo mes vencimiento de la tarjeta debe completarse.";
         }
-        elseif( strlen($_POST['mesv']) == 2 ) {
+        elseif( strlen($_POST['mesv']) === 2 ) {
             $errores['mesv'] = "No completo el campo mes vencimiento de la tarjeta.(MM)";
     }
     }
@@ -58,7 +58,7 @@ if ($_POST){
         if( empty($_POST['aniov']) ) {
             $errores['aniov'] = "El campo año vencimiento debe completarse.";
         }
-        elseif( strlen($_POST['aniov']) == 2 ) {
+        elseif( (strlen($_POST['aniov'])) === 2 ) {
             $errores['aniov'] = "No completo el campo año vencimiento de la tarjeta (AA).";
         }
     }
@@ -66,7 +66,7 @@ if ($_POST){
         if( empty($_POST['ccv']) ) {
             $errores['ccv'] = "El campo ccv debe completarse.";
         }
-        elseif( strlen($_POST['ccv']) == 3 ) {
+        elseif( strlen($_POST['ccv']) === 3 ) {
             $errores['ccv'] = "No escribio los tres digitos del ccv.";
         }
     }
@@ -231,17 +231,17 @@ $sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
 
     <div class="form-group-datos-cliente">
         <label for="full_name_id" class="control-label">Nombre completo</label>
-        <input type="text" name="name" class="form-control"  placeholder="John Deer">
+        <input type="text" name="name" class="form-control" value="<?= isset($_POST['name']) ? $_POST['name'] : '' ?>" placeholder="John Deer">
     </div>    
 
     <div class="form-group-datos-cliente">
         <label for="street1_id" class="control-label">Dirreción</label>
-        <input type="text" name="street" class="form-control"   placeholder="Nombre de la calle, Número, Piso, Depto">
+        <input type="text" name="street" class="form-control" value="<?= isset($_POST['street']) ? $_POST['street'] : '' ?>"   placeholder="Nombre de la calle, Número, Piso, Depto">
     </div>                       
 
     <div class="form-group-datos-cliente"> 
         <label for="city_id" class="control-label">Ciudad</label>
-        <input type="text" name="city" class="form-control"   placeholder="Smallville">
+        <input type="text" name="city" class="form-control" value="<?= isset($_POST['city']) ? $_POST['city'] : '' ?>"   placeholder="Smallville">
     </div>                                    
                             
     <div class="form-group-datos-cliente">
@@ -275,7 +275,7 @@ $sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
     
     <div class="form-group-datos-cliente"> 
         <label for="zip_id" class="control-label">Codigo postal</label>
-        <input type="text" name="cp" class="form-control" placeholder="#####">
+        <input type="text" name="cp" class="form-control" value="<?= isset($_POST['cp']) ? $_POST['cp'] : '' ?>"  placeholder="#####">
     </div>        
     <br><br>  
     
@@ -285,21 +285,21 @@ $sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
      
       <div class="row ">
               <div class="col-md-12">
-                  <input type="text" class="form-control" name="ntarjeta" placeholder="Numero de la tarjeta de crédito" />
+                  <input type="text" class="form-control" name="ntarjeta" value="<?= isset($_POST['ntarjeta']) ? $_POST['ntarjeta'] : '' ?>"  placeholder="Numero de la tarjeta de crédito" />
               </div>
           </div>
      <div class="row ">
               <div class="col-md-3 col-sm-3 col-xs-3">
                   <span class="help-block text-muted small-font" >Mes de vencimiento</span>
-                  <input type="text" class="form-control" name="mesv" placeholder="MM" />
+                  <input type="text" class="form-control" name="mesv" value="<?= isset($_POST['mesv']) ? $_POST['mesv'] : '' ?>"  placeholder="MM" />
               </div>
          <div class="col-md-3 col-sm-3 col-xs-3">
                   <span class="help-block text-muted small-font" >Año de vencimiento</span>
-                  <input type="text" class="form-control" name="aniov" placeholder="YY" />
+                  <input type="text" class="form-control" name="aniov" value="<?= isset($_POST['aniov']) ? $_POST['aniov'] : '' ?>"  placeholder="YY" />
               </div>
         <div class="col-md-3 col-sm-3 col-xs-3">
                   <span class="help-block text-muted small-font" >  CCV</span>
-                  <input type="text" class="form-control" name="ccv" placeholder="CCV" />
+                  <input type="text" class="form-control" name="ccv" value="<?= isset($_POST['ccv']) ? $_POST['ccv'] : '' ?>"  placeholder="CCV" />
               </div>
          <div class="col-md-3 col-sm-3 col-xs-3">
 <img src="img/credit-card-2.png" class="img-rounded" width="50px" />
@@ -308,7 +308,7 @@ $sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
      <div class="row ">
               <div class="col-md-12 pad-adjust">
 
-                  <input type="text" class="form-control" name="nombreTarjeta" placeholder="Nombre de la tarjeta" />
+                  <input type="text" class="form-control" name="nombreTarjeta" value="<?= isset($_POST['nombreTarjeta']) ? $_POST['nombreTarjeta'] : '' ?>" placeholder="Nombre de la tarjeta" />
               </div>
           </div>
      

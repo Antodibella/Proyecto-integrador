@@ -258,7 +258,7 @@ if ($_POST){
             <div class="form-group">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" name="promociones" for="gridCheck">
+                    <label class="form-check-label" name="promociones" for="gridCheck" value="promo">
                         Quiero recibir promociones
                     </label>
                     <br>
