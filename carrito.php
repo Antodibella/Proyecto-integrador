@@ -7,7 +7,7 @@ if ($_POST){
     $usuario = json_decode($db, true);
     if(isset($_POST["name"])){
         if( empty($_POST['name']) ) {
-            $errores['name'] = "Este campo debe completarse.";
+            $errores['name'] = "El campo nombre debe completarse.";
         }
         elseif( strlen($_POST['name']) < 2 ) {
             $errores['name'] = "Tu nombre debe tener al menos 2 caracteres.";
@@ -15,7 +15,7 @@ if ($_POST){
     }
     if( isset($_POST['street']) ) {
         if( empty($_POST['street']) ) {
-            $errores['street'] = "Este campo debe completarse.";
+            $errores['street'] = "El campo Calle debe completarse.";
         }
         elseif( strlen($_POST['street']) < 2 ) {
             $errores['street'] = "Tu calle debe tener al menos 2 caracteres.";
@@ -23,20 +23,13 @@ if ($_POST){
     }
     if( isset($_POST["city"]) ) {
         if( empty($_POST['city']) ) {
-            $errores['city'] = "Este campo debe completarse.";
+            $errores['city'] = "El campo ciudad debe completarse.";
         }
         elseif( strlen($_POST['city']) < 2 ) {
             $errores['city'] = "No completo el campo ciudad.";
         }
     }  
-    if( isset($_POST["provincia"]) ) {
-        if( empty($_POST['provincia']) ) {
-            $errores['provincia'] = "Este campo debe completarse.";
-        }
-        elseif( strlen($_POST['provincia']) < 2 ) {
-            $errores['provincia'] = "No completo el campo provincia.";
-        }
-    }
+   
     if( isset($_POST["cp"]) ) {
         if( empty($_POST['cp']) ) {
             $errores['cp'] = "El campo codigo postal debe completarse.";
@@ -49,7 +42,7 @@ if ($_POST){
         if( empty($_POST['ntarjeta']) ) {
             $errores['ntarjeta'] = "El campo numero de tarjeta debe completarse.";
         }
-        elseif( strlen($_POST['ntarjeta']) < 2 ) {
+        elseif( strlen($_POST['ntarjeta']) === 16 ) {
             $errores['ntarjeta'] = "No completo el campo numero de tarjeta.";
         }
     }
@@ -57,32 +50,32 @@ if ($_POST){
         if( empty($_POST['mesv']) ) {
             $errores['mesv'] = "El campo mes vencimiento de la tarjeta debe completarse.";
         }
-        elseif( strlen($_POST['ntarjeta']) < 2 ) {
-            $errores['mesv'] = "No completo el campo mes vencimiento de la tarjeta.";
-        }
+        elseif( strlen($_POST['mesv']) == 2 ) {
+            $errores['mesv'] = "No completo el campo mes vencimiento de la tarjeta.(MM)";
+    }
     }
     if( isset($_POST["aniov"]) ) {
         if( empty($_POST['aniov']) ) {
             $errores['aniov'] = "El campo año vencimiento debe completarse.";
         }
-        elseif( strlen($_POST['ntarjeta']) < 2 ) {
-            $errores['aniov'] = "No completo el campo año vencimiento de la tarjeta.";
+        elseif( strlen($_POST['aniov']) == 2 ) {
+            $errores['aniov'] = "No completo el campo año vencimiento de la tarjeta (AA).";
         }
     }
     if( isset($_POST["ccv"]) ) {
         if( empty($_POST['ccv']) ) {
             $errores['ccv'] = "El campo ccv debe completarse.";
         }
-        elseif( strlen($_POST['ntarjeta']) < 2 ) {
-            $errores['ccv'] = "No completo el campo ccv.";
+        elseif( strlen($_POST['ccv']) == 3 ) {
+            $errores['ccv'] = "No escribio los tres digitos del ccv.";
         }
     }
-    if( isset($_POST["nombretarjeta"]) ) {
-        if( empty($_POST['nombretarjeta']) ) {
-            $errores['nombretarjeta'] = "El campo nombre de tarjeta debe completarse.";
+    if( isset($_POST["nombreTarjeta"]) ) {
+        if( empty($_POST['nombreTarjeta']) ) {
+            $errores['nombreTarjeta'] = "El campo nombre de tarjeta debe completarse.";
         }
-        elseif( strlen($_POST['nombretarjeta']) < 2 ) {
-            $errores['nombretarjeta'] = "No completo el campo nombre de tarjeta.";
+        elseif( strlen($_POST['nombreTarjeta']) < 2 ) {
+            $errores['nombreTarjeta'] = "No completo el campo nombre de tarjeta.";
         }
     }
     if(count($errores) == 0){
@@ -94,7 +87,7 @@ if ($_POST){
         "cp" => $_POST["cp"],
         "nrotarjeta" => $_POST["ntarjeta"],
         "mesVencimiento" => $_POST["mesv"],
-        "añoVencimiento" => $_POST["aniov"],
+        "anioVencimiento" => $_POST["aniov"],
         "ccv" => $_POST["ccv"],
         "nombreTarjeta" => $_POST["nombreTarjeta"],
         
@@ -232,63 +225,63 @@ $sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
   
 </div>
 <!-- Formulario Direccion del Cliente para ir al Pago con CreditCArd -->
-<form>
+<form action="" method="POST" class="credit-card-div">
+<div class="panel panel-default" >
+ <div class="panel-heading">
 
-    <div class="form-group-datos-cliente"> <!-- Full Name -->
+    <div class="form-group-datos-cliente">
         <label for="full_name_id" class="control-label">Nombre completo</label>
-        <input type="text" class="form-control" id="full_name_id" name="name" placeholder="John Deer">
+        <input type="text" name="name" class="form-control"  placeholder="John Deer">
     </div>    
 
-    <div class="form-group-datos-cliente"> <!-- Street 1 -->
+    <div class="form-group-datos-cliente">
         <label for="street1_id" class="control-label">Dirreción</label>
-        <input type="text" class="form-control" id="street1_id" name="street" placeholder="Nombre de la calle, Número, Piso, Depto">
+        <input type="text" name="street" class="form-control"   placeholder="Nombre de la calle, Número, Piso, Depto">
     </div>                       
 
-    <div class="form-group-datos-cliente"> <!-- City-->
+    <div class="form-group-datos-cliente"> 
         <label for="city_id" class="control-label">Ciudad</label>
-        <input type="text" class="form-control" id="city_id" name="city" placeholder="Smallville">
+        <input type="text" name="city" class="form-control"   placeholder="Smallville">
     </div>                                    
                             
-    <div class="form-group-datos-cliente"> <!-- State Button -->
+    <div class="form-group-datos-cliente">
         <label for="state_id" class="control-label">Provincia</label>
-        <select class="form-control" name="provincia" id="state_id">
-                <option value="e" >Santa Fe</option>
-                <option value="ba" >Buenos Aires</option>
-                <option value="c" >Cordoba</option>
-                <option value="ca" >Catamarca</option>
+        <select class="form-control" name="provincia" >
+                <option value="stafe" >Santa Fe</option>
+                <option value="baires" >Buenos Aires</option>
+                <option value="cba" >Cordoba</option>
+                <option value="ctmca" >Catamarca</option>
                 <option value="cha" >Chaco</option>
-                <option value="ch" >Chubut</option>
-                <option value="t" >Tierra del Fuego, Antártida e Isla del Atlántico Sur</option>
-                <option value="co" >Corrientes</option>
-                <option value="er" >Entre Ríos</option>
-                <option value="f" >Formosa</option>
-                <option value="j" >Jujuy</option>
-                <option value="lp" >La Pampa</option>
-                <option value="lr" >La Rioja</option>
-                <option value="me" >Mendoza</option>
-                <option value="mi" >Misiones</option>
-                <option value="ne" >Neuquén</option>
-                <option value="rn" >Río Negro</option>
-                <option value="sa" >Salta</option>
-                <option value="sj" >San Juan</option>
-                <option value="sl" >San Luis</option>
-                <option value="sc" >Santa Cruz</option>
-                <option value="se" >Santiago del Estero</option>
+                <option value="chut" >Chubut</option>
+                <option value="tdelf" >Tierra del Fuego, Antártida e Isla del Atlántico Sur</option>
+                <option value="corr" >Corrientes</option>
+                <option value="erios" >Entre Ríos</option>
+                <option value="for" >Formosa</option>
+                <option value="juj" >Jujuy</option>
+                <option value="lpam" >La Pampa</option>
+                <option value="lrio" >La Rioja</option>
+                <option value="men" >Mendoza</option>
+                <option value="mis" >Misiones</option>
+                <option value="neu" >Neuquén</option>
+                <option value="rneg" >Río Negro</option>
+                <option value="salt" >Salta</option>
+                <option value="sjua" >San Juan</option>
+                <option value="slui" >San Luis</option>
+                <option value="scru" >Santa Cruz</option>
+                <option value="sest" >Santiago del Estero</option>
                 <option value="tuc" >Tucumán</option>
         </select>                    
     </div>
     
-    <div class="form-group-datos-cliente"> <!-- Zip Code-->
+    <div class="form-group-datos-cliente"> 
         <label for="zip_id" class="control-label">Codigo postal</label>
-        <input type="text" class="form-control" id="zip_id" name="zip" placeholder="#####">
+        <input type="text" name="cp" class="form-control" placeholder="#####">
     </div>        
     <br><br>  
     
-</form>
+
 <!-- Formulario Credit Card -->
-<form action="#" method="POST" class="credit-card-div">
-<div class="panel panel-default" >
- <div class="panel-heading">
+
      
       <div class="row ">
               <div class="col-md-12">
@@ -315,7 +308,7 @@ $sHTML .= '<br> <hr> <br> <strong>Precio total:</strong> ' . $fPrecioTotal;
      <div class="row ">
               <div class="col-md-12 pad-adjust">
 
-                  <input type="text" class="form-control" name="nombretarjeta" placeholder="Nombre de la tarjeta" />
+                  <input type="text" class="form-control" name="nombreTarjeta" placeholder="Nombre de la tarjeta" />
               </div>
           </div>
      

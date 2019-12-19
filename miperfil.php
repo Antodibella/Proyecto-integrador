@@ -58,11 +58,7 @@ if($_POST){
         $errores['password1'] = "Las contraseñas no coinciden";
     } 
 }
-/* 
-Notice: Undefined index: salir in C:\laragon\www\Proyecto-integrador\Proyecto-integrador\miperfil.php on line 64
 
-Notice: Undefined index: guardar in C:\laragon\www\Proyecto-integrador\Proyecto-integrador\miperfil.php on line 68
-*/
 if(count($errores) == 0){
     if($_POST){
         if(isset($_POST['salir']) && $_POST['salir'] == 'Salir'){
