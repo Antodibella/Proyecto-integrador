@@ -119,22 +119,24 @@ if ($_POST){
     if(count($usuario)){
         $id = end($usuario)['id'] +1;
     } 
-    
-       $usuario[] = $_SESSION['usuario'] =[  "nombre" => $_POST["name"],
-                        "apellido" => $_POST["surname"],
-                        "username" => $_POST["username"],
-                        "email" => $_POST["email"],
-                        "password" => $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
-                        "city" => $_POST["city"],
-                        "country" => $_POST["country"],
-                        "email" => $_POST["email"],
-                        "cp" => $_POST["cp"],
-                        "id" => $id,
-                        "promociones" => $_POST["promociones"],
-                     ];
-       $db = json_encode ($usuario);
+require 'conection.php';
 
-       file_put_contents("usuario.json", $db);
+$_SESSION['usuario'] =[ $nombre = $_POST["name"],
+                        $apellido = $_POST["surname"],
+                        $username = $_POST["username"],
+                        $email = $_POST["email"],
+                        $password = $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
+                        $city = $_POST["city"],
+                        $country = $_POST["country"],
+                        $cp = $_POST["cp"],
+                        $id = $id,
+                        $promociones = $_POST["promociones"]
+
+function agregarUsuario(PDO $db) {
+    $query = $db->prepare("insert into 'usuario' ('$nombre','$apellido','$username','$email','$password','$city','$cp','$id','$promociones')");
+    $query->execute();
+    
+}
 
        header('Location: miperfil.php');
     } }
