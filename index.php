@@ -6,6 +6,11 @@ if (isset($_SESSION['usuario'])) {
     header('Location');
 }
 
+
+//Base de datos //
+require_once "coneccion.php";
+
+
 $errores = [];
 
 if(count($errores) == 0){

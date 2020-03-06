@@ -44,16 +44,34 @@ if ($_POST){
             if(count($consulta)){
                 $idpreg = end($consulta)['id'] +1;
             } 
-        
-               $consulta[] =[  "nombre" => $_POST["name"],
+            $consulta =[            $nombre = $_POST["name"],
+                                    $apellido = $_POST["surname"],
+                                    $email = $_POST["email"],
+                                    $consulta = $_POST["consulta"],
+                                    $id = $idpreg,
+            
+];
+
+$query = $db->prepare("insert into consultas values (:id,:nombre,:apellido,:email,:consulta");   
+$query->execute([
+'id'=>$id,
+'nombre'=> $nombre,
+'apellido'=>$apellido,
+'email'=>$email,
+'consulta'=>$consulta
+]);
+
+
+         /*      $consulta[] =[  "nombre" => $_POST["name"],
                                 "apellido" => $_POST["surname"],
                                 "email" => $_POST["email"],
                                 "consulta" => $_POST["consulta"],
                                 "id" => $idpreg,
                              ];
                $db = json_encode ($consulta);
-        
+       
                file_put_contents("consulta.json", $db);
+                */
                header('Location: exito.php');
             }
             } }

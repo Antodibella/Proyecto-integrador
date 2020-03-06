@@ -137,7 +137,7 @@ if(count($errores) == 0){
         <h1>Mi Perfil </h1>
        
         <ul>
-                <li><strong>Nombre: </strong><?= $usuario['nombre'] ?></li>
+                <li><strong>Nombre: </strong><?=  $usuario['apellido'] ?></li>
                 <li><strong>Apellido: </strong><?= $usuario['apellido'] ?></li>
                 <li><strong>Email: </strong><?= $usuario['email'] ?></li>
                 <li><strong>Usuario: </strong><?= $usuario['username'] ?></li>

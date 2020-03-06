@@ -17,8 +17,12 @@ $induser=0;
 $id=0;        
 
 if ($_POST){
-    $db = file_get_contents("usuario.json");
-    $usuario = json_decode($db, true);
+
+    require 'coneccion.php';
+
+    //$db = file_get_contents("usuario.json");
+    //$usuario = json_decode($db, true);
+   
     if(isset($_POST["name"])){
         if( empty($_POST['name']) ) {
             $errores['name'] = "Este campo debe completarse.";
@@ -96,7 +100,16 @@ if ($_POST){
             $errores['cp'] = "No completo el campo codigo postal.";
         }
     }
-    if(isset($_POST["email"])){
+    /* if(isset($_POST["email"])){
+        
+        if($index !== false){
+            $errores['email'] = "El email ya se uso para otro registro";
+            }
+   
+    }
+   if(isset($_POST["email"])){ $query = $db->prepare("select email from usuarios where $_POST["email"] != 'email');   
+        $query->execute();
+
         $email = array_column($usuario,"email");
         $index = array_search($_POST["email"],$email);
         if($index !== false){
@@ -111,32 +124,43 @@ if ($_POST){
             $errores['username'] = "Ya existe nombre de usuario";
             }
     }
-    
+ */   
     if(count($errores) == 0){
-
-    
-
+       
     if(count($usuario)){
         $id = end($usuario)['id'] +1;
     } 
-require 'conection.php';
 
-$_SESSION['usuario'] =[ $nombre = $_POST["name"],
-                        $apellido = $_POST["surname"],
-                        $username = $_POST["username"],
-                        $email = $_POST["email"],
-                        $password = $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
-                        $city = $_POST["city"],
-                        $country = $_POST["country"],
-                        $cp = $_POST["cp"],
-                        $id = $id,
-                        $promociones = $_POST["promociones"]
 
-function agregarUsuario(PDO $db) {
-    $query = $db->prepare("insert into 'usuario' ('$nombre','$apellido','$username','$email','$password','$city','$cp','$id','$promociones')");
-    $query->execute();
-    
-}
+    $usuario =[     $nombre = $_POST["name"],
+                    $apellido = $_POST["surname"],
+                    $username = $_POST["username"],
+                    $email = $_POST["email"],
+                    $password = $hash = password_hash($_POST["password"], PASSWORD_DEFAULT), 
+                    $city = $_POST["city"],
+                    $country = $_POST["country"],
+                    $cp = $_POST["cp"],
+                    $id = $id,
+                    $promociones = $_POST["promociones"]
+];
+
+$query = $db->prepare("insert into usuarios values (:id,:nombre,:apellido,:email,:username,:password,:city,:country,:cp,:promociones");   
+$query->execute([
+'id'=>$id,
+'nombre'=> $nombre,
+'apellido'=>$apellido,
+'email'=>$email,
+'username'=>$username,
+'password'=>$password,
+'city'=>$city,
+'country'=>$country,
+'cp'=>$cp,
+'promociones'=>$promociones
+]);
+
+
+
+    $_SESSION['usuario'] = $usuario;
 
        header('Location: miperfil.php');
     } }
